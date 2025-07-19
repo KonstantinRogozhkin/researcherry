@@ -1,8 +1,8 @@
 <div id="researcherry-logo" align="center">
     <br />
-    <img src="./icons/stable/researcherry_cnl.svg" alt="Researcherry Logo" width="200"/>
-    <h1>Researcherry</h1>
-    <h3>Research-Focused Code Editor Based on Visual Studio Code</h3>
+    <img src="./icons/stable/researcherry_cnl.svg" alt="ResearcherryAI Logo" width="200"/>
+    <h1><strong>R</strong>esearcherry<strong>AI</strong></h1>
+    <h3>No-code платформа AI-агентов для исследования клиентов</h3>
 </div>
 
 <div id="badges" align="center">
@@ -19,33 +19,58 @@
 
 </div>
 
-**Researcherry is a research-focused code editor built on top of Visual Studio Code. It provides enhanced tools and features specifically designed for researchers, data scientists, and academic professionals.**
+**ResearcherryAI — это no-code платформа, которая позволяет продуктовым командам и исследователям создавать и масштабировать AI-агентов для глубокого изучения клиентов. Эти агенты автоматизируют весь цикл исследования: анализируют коммуникации с пользователями, выявляют неудовлетворенные потребности, оценивают потенциальное влияние на выручку и предоставляют инсайты в реальном времени.**
 
-## Table of Contents
+## Содержание
 
-- [Download/Install](#download-install)
-  - [Install with Brew](#install-with-brew)
-  - [Install with Windows Package Manager (WinGet)](#install-with-winget)
-  - [Install with Chocolatey](#install-with-choco)
-  - [Install with Scoop](#install-with-scoop)
-  - [Install with snap](#install-with-snap)
-  - [Install with Package Manager](#install-with-package-manager)
-  - [Install on Arch Linux](#install-on-arch-linux)
-  - [Flatpak Option](#flatpak)
-- [Build](#build)
-- [Why Does This Exist](#why)
-- [More Info](#more-info)
-- [Supported Platforms](#supported-platforms)
+- [Ключевые возможности](#key-features)
+- [Как это работает](#how-it-works)
+- [Наши результаты](#results)
+- [Проблема, которую мы решаем](#problem)
+- [Наше преимущество](#advantage)
+- [Установка](#download-install)
+- [Поддерживаемые платформы](#supported-platforms)
 
-## <a id="download-install"></a>Download/Install
+## <a id="key-features"></a>Ключевые возможности
+
+AI-агенты, созданные на платформе ResearcherryAI, выполняют рутинные, но критически важные задачи:
+
+* **Анализируют** интервью, переписки в мессенджерах, тикеты в поддержке и другие коммуникации.
+* **Планируют** и организуют интервью с пользователями.
+* **Формулируют** и верифицируют инсайты о поведении и потребностях клиентов.
+* **Оценивают** влияние предлагаемых изменений на ключевые бизнес-метрики.
+
+## <a id="how-it-works"></a>Как это работает
+
+Наша платформа позволяет исследователям без навыков программирования создавать, настраивать и даже монетизировать своих AI-агентов. Ключевой принцип — **"человек-в-цикле" (human-in-the-loop)**: на каждом критическом этапе принятия решений именно человек верифицирует результаты, что гарантирует высокое качество и достоверность данных, исключая "галлюцинации" AI.
+
+## <a id="results"></a>Наши результаты
+
+Наш MVP (минимально жизнеспособный продукт) — агент **ProductResearcherAI**, который работает в среде разработки Cursor IDE. Результаты:
+
+* Используется более чем **10 исследователями-фрилансерами**
+* Пилотные исследовательские контракты на сумму **$12,100** в 7 различных секторах
+* **В 80 раз быстрее анализ интервью**: 3 минуты вместо 4-5 часов
+* **В 15 раз быстрее создание карт пользовательских путей**: 20 минут вместо 5+ часов
+* **Увеличение производительности исследователя в 2-3 раза**: до 8+ проектов и 90 интервью в месяц
+
+## <a id="problem"></a>Проблема, которую мы решаем
+
+Текущая работа в Cursor IDE требует от исследователей технических навыков (знание Git, основы программирования), что замедляет их адаптацию. Чтобы устранить это препятствие, мы создаем **ResearcherryAI** — интуитивно понятную web-платформу для любого исследователя, даже без навыков программирования.
+
+## <a id="advantage"></a>Наше преимущество
+
+В отличие от конкурентов, которые фокусируются либо только на аналитике (Dovetail), либо на рекрутинге (User Interviews), мы предоставляем **комплексное решение для всего цикла исследования**.
+
+Наш главный инсайт: исследователи не хотят, чтобы AI их заменил — они хотят, чтобы AI **усиливал их экспертизу**.
+
+## <a id="download-install"></a>Установка
 
 :tada: :tada:
-Download latest release here:
-[stable](https://github.com/VSCodium/vscodium/releases) or
-[insiders](https://github.com/VSCodium/vscodium-insiders/releases)
+Скачать последнюю версию можно здесь:
+[стабильная версия](https://github.com/VSCodium/vscodium/releases) или
+[инсайдерская версия](https://github.com/VSCodium/vscodium-insiders/releases)
 :tada: :tada:
-
-[More info / helpful tips are here.](https://github.com/VSCodium/vscodium/blob/master/docs/index.md)
 
 
 #### <a id="install-with-brew"></a>Install with Brew (Mac)

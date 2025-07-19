@@ -65,180 +65,108 @@ AI-агенты, созданные на платформе ResearcherryAI, вы
 
 :tada: :tada:
 Скачать последнюю версию можно здесь:
-[стабильная версия](https://github.com/VSCodium/vscodium/releases) или
-[инсайдерская версия](https://github.com/VSCodium/vscodium-insiders/releases)
+[Последняя версия](https://github.com/KonstantinRogozhkin/researcherry/releases)
 :tada: :tada:
 
 
-#### <a id="install-with-brew"></a>Install with Brew (Mac)
+### Системные требования
 
-If you are on a Mac and have [Homebrew](https://brew.sh/) installed:
+- Современный веб-браузер с поддержкой WebAssembly
+- Подключение к интернету
+
+### Инструкция по установке
+
+1. Скачайте последнюю версию с [нашей страницы релизов](https://github.com/KonstantinRogozhkin/researcherry/releases)
+2. Распакуйте архив в удобное место
+3. Запустите приложение, следуя инструкциям для вашей операционной системы:
+
+**macOS**:
 ```bash
-# stable
-brew install --cask vscodium
-
-# insiders
-brew install --cask vscodium@insiders
+# Запуск приложения
+open ResearcherryAI.app
 ```
 
-*Note for macOS users: if you can't open the App, please read [the following troubleshooting](https://github.com/VSCodium/vscodium/blob/master/docs/troubleshooting.md#macos).*
-
-#### <a id="install-with-winget"></a>Install with Windows Package Manager (WinGet)
-
-If you use Windows and have [Windows Package Manager](https://github.com/microsoft/winget-cli) installed:
+**Windows**:
 ```cmd
-:: stable
-winget install -e --id VSCodium.VSCodium
-
-:: insider
-winget install -e --id VSCodium.VSCodium.Insiders
+# Запустите исполняемый файл
+ResearcherryAI.exe
 ```
 
-#### <a id="install-with-choco"></a>Install with Chocolatey (Windows)
-
-If you use Windows and have [Chocolatey](https://chocolatey.org) installed (thanks to [@Thilas](https://github.com/Thilas)):
-```cmd
-:: stable
-choco install vscodium
-
-:: insider
-choco install vscodium-insiders
-```
-
-#### <a id="install-with-scoop"></a>Install with Scoop (Windows)
-
-If you use Windows and have [Scoop](https://scoop.sh) installed:
+**Linux**:
 ```bash
-scoop bucket add extras
-scoop install vscodium
+# Запуск приложения
+./researcherryai
 ```
 
-#### <a id="install-with-snap"></a>Install with snap (GNU/Linux)
+## <a id="build"></a>Разработка
 
-VSCodium is available in the [Snap Store](https://snapcraft.io/) as [Codium](https://snapcraft.io/codium), thanks to the help of the [Snapcrafters](https://github.com/snapcrafters/codium) community.
-If your GNU/Linux distribution has support for [snaps](https://snapcraft.io/docs/installing-snapd):
+Инструкции по сборке проекта можно найти в [документации для разработчиков](https://github.com/KonstantinRogozhkin/researcherry/blob/master/docs/development.md).
 
-```bash
-snap install codium --classic
-```
+## <a id="why"></a>Почему ResearcherryAI
 
-#### <a id="install-with-package-manager"></a>Install with Package Manager (GNU/Linux)
+Мы создали ResearcherryAI, чтобы решить ключевую проблему современных продуктовых команд: качественное исследование пользователей требует слишком много времени и ресурсов. 
 
-You can always install using the downloads (deb, rpm, tar) on the releases page for [stable](https://github.com/VSCodium/vscodium/releases) or [insiders](https://github.com/VSCodium/vscodium-insiders/releases), but you can also install using your favorite package manager and get automatic updates.
+Наш подход сочетает мощь искусственного интеллекта с экспертизой исследователей, что позволяет:
 
-[@paulcarroty](https://github.com/paulcarroty) has set up a repository with instructions for `apt`, `dnf` and `zypper` [here](https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo).
+1. Автоматизировать рутинные задачи анализа данных
+2. Выявлять неочевидные паттерны в поведении пользователей
+3. Быстрее принимать продуктовые решения на основе реальных данных
 
-Any issues installing VSCodium using your package manager should be directed to that repository's issue tracker.
+В отличие от других решений, мы не пытаемся заменить исследователей — мы даем им суперсилы, позволяя сосредоточиться на стратегических задачах вместо рутины.
 
-#### <a id="install-on-arch-linux"></a>Install on Arch Linux
+## <a id="more-info"></a>Дополнительная информация
 
-VSCodium is available in [AUR](https://wiki.archlinux.org/index.php/Arch_User_Repository), maintained by [@binex-dsk](https://github.com/binex-dsk) as package [vscodium-bin](https://aur.archlinux.org/packages/vscodium-bin/) (stable) and as [vscodium-insiders-bin](https://aur.archlinux.org/packages/vscodium-insiders-bin).
+### Документация
 
-If you want to save disk space by having VSCodium use the Electron system-wide, you also have [vscodium-electron](https://aur.archlinux.org/packages/vscodium-electron),
-maintained by [@m00nw4tch3r](https://aur.archlinux.org/account/m00nw4tch3r).
+Подробную документацию по использованию ResearcherryAI можно найти в [нашей документации](https://github.com/KonstantinRogozhkin/researcherry/blob/master/docs/index.md).
 
-An alternative package [vscodium-git](https://aur.archlinux.org/packages/vscodium-git/), maintained by [@cedricroijakkers](https://github.com/cedricroijakkers), is also available should you wish to compile from source yourself.
+### Решение проблем
 
-#### <a id="flatpak"></a>Flatpak Option (GNU/Linux)
+Если у вас возникли проблемы, пожалуйста, ознакомьтесь с [разделом по устранению неполадок](https://github.com/KonstantinRogozhkin/researcherry/blob/master/docs/troubleshooting.md) или создайте issue в нашем репозитории.
 
-VSCodium is available as a Flatpak app [here](https://flathub.org/apps/details/com.vscodium.codium) and the build repo is [here](https://github.com/flathub/com.vscodium.codium).
-If your distribution has support for [flatpak](https://flathub.org), and you have enabled the [flathub repo](https://flatpak.org/setup/):
+### Расширения и интеграции
 
-```bash
-flatpak install flathub com.vscodium.codium
-flatpak run com.vscodium.codium
-```
+ResearcherryAI поддерживает интеграцию с популярными инструментами для исследователей:
 
-## <a id="build"></a>Build
+- Интеграция с Miro для создания карт пользовательских путей
+- Экспорт данных в Notion и другие системы управления знаниями
+- Интеграция с календарями для планирования интервью
 
-Build instructions can be found [here](https://github.com/VSCodium/vscodium/blob/master/docs/howto-build.md)
+### Как работает наша технология
 
-## <a id="why"></a>Why Does This Exist
+ResearcherryAI использует комбинацию нескольких технологий:
 
-This repository contains build files to generate free release binaries of Microsoft's Visual Studio Code. When we speak of "free software", we're talking about freedom, not price.
+1. Обработка естественного языка (NLP) для анализа интервью и коммуникаций
+2. Машинное обучение для выявления паттернов в поведении пользователей
+3. Генеративные модели для создания гипотез и инсайтов
+4. Интерфейс человек-AI для верификации результатов
 
-Microsoft's releases of Visual Studio Code are licensed under [this not-FLOSS license](https://code.visualstudio.com/license) and contain telemetry/tracking. According to [this comment](https://github.com/Microsoft/vscode/issues/60#issuecomment-161792005) from a Visual Studio Code maintainer:
+## <a id="supported-platforms"></a>Поддерживаемые платформы
 
-> When we [Microsoft] build Visual Studio Code, we do exactly this. We clone the vscode repository, we lay down a customized product.json that has Microsoft specific functionality (telemetry, gallery, logo, etc.), and then produce a build that we release under our license.
->
-> When you clone and build from the vscode repo, none of these endpoints are configured in the default product.json. Therefore, you generate a "clean" build, without the Microsoft customizations, which is by default licensed under the MIT license
+ResearcherryAI работает на следующих платформах:
 
-This repo exists so that you don't have to download+build from source. The build scripts in this repo clone Microsoft's vscode repo, run the build commands, and upload the resulting binaries to [GitHub releases](https://github.com/VSCodium/vscodium/releases). __These binaries are licensed under the MIT license. Telemetry is disabled.__
+- [x] macOS 10.15 или новее (Intel и Apple Silicon)
+- [x] Windows 10 или новее
+- [x] Linux (основные дистрибутивы)
+- [x] Веб-версия (доступ через браузер)
 
-If you want to build from source yourself, head over to [Microsoft's vscode repo](https://github.com/Microsoft/vscode) and follow their [instructions](https://github.com/Microsoft/vscode/wiki/How-to-Contribute#build-and-run). This repo exists to make it easier to get the latest version of MIT-licensed Visual Studio Code.
-
-Microsoft's build process (which we are running to build the binaries) does download additional files. Those packages downloaded during build are:
-
-- Pre-built extensions from the GitHub:
-  - [ms-vscode.js-debug-companion](https://github.com/microsoft/vscode-js-debug-companion)
-  - [ms-vscode.js-debug](https://github.com/microsoft/vscode-js-debug)
-  - [ms-vscode.vscode-js-profile-table](https://github.com/microsoft/vscode-js-profile-visualizer)
-- From [Electron releases](https://github.com/electron/electron/releases) (using [gulp-atom-electron](https://github.com/joaomoreno/gulp-atom-electron))
-  - electron
-  - ffmpeg
-
-## <a id="more-info"></a>More Info
-
-### Documentation
-
-For more information on getting all the telemetry disabled, tips for migrating from Visual Studio Code to VSCodium and more, have a look at [the Docs page](https://github.com/VSCodium/vscodium/blob/master/docs/index.md) page.
-
-### Troubleshooting
-
-If you have any issue, please check [the Troubleshooting page](https://github.com/VSCodium/vscodium/blob/master/docs/troubleshooting.md) or the existing issues.
-
-### Extensions and the Marketplace
-
-According to the Visual Studio Marketplace [Terms of Use](https://aka.ms/vsmarketplace-ToU), _you may only install and use Marketplace Offerings with Visual Studio Products and Services._ For this reason, VSCodium uses [open-vsx.org](https://open-vsx.org/), an open source registry for Visual Studio Code extensions. See the [Extensions + Marketplace](https://github.com/VSCodium/vscodium/blob/master/docs/index.md#extensions-marketplace) section on the Docs page for more details.
-
-Please note that some Visual Studio Code extensions have licenses that restrict their use to the official Visual Studio Code builds and therefore do not work with VSCodium. See [this note](https://github.com/VSCodium/vscodium/blob/master/docs/extensions.md#proprietary-debugging-tools) on the Docs page for what's been found so far and possible workarounds.
-
-### How are the VSCodium binaries built?
-
-If you would like to see the commands we run to build `vscode` into VSCodium binaries, have a look at the workflow files in `.github/workflows` for Windows, GNU/Linux and macOS. These build files call all the other scripts in the repo. If you find something that doesn't make sense, feel free to ask about it [on Gitter](https://gitter.im/VSCodium/Lobby).
-
-The builds are run every day, but exit early if there isn't a new release from Microsoft.
-
-## <a id="supported-platforms"></a>Supported Platforms
-
-The minimal version is limited by the core component Electron, you may want to check its [platform prerequisites](https://www.electronjs.org/docs/latest/development/build-instructions-gn#platform-prerequisites).
-
-- [x] macOS (`zip`, `dmg`) macOS 10.15 or newer x64
-- [x] macOS (`zip`, `dmg`) macOS 11.0 or newer arm64
-- [x] GNU/Linux x64 (`deb`, `rpm`, `AppImage`, `snap`, `tar.gz`)
-- [x] GNU/Linux arm64 (`deb`, `rpm`, `snap`, `tar.gz`)
-- [x] GNU/Linux armhf (`deb`, `rpm`, `tar.gz`)
-- [x] GNU/Linux riscv64 (`tar.gz`)
-- [x] GNU/Linux loong64 (`tar.gz`)
-- [x] GNU/Linux ppc64le (`tar.gz`)
-- [x] Windows 10 / Server 2012 R2 or newer x64
-- [x] Windows 10 / Server 2012 R2 or newer arm64
-
-## <a id="thanks"></a>Special thanks
+## <a id="thanks"></a>Благодарности
 
 <table>
   <tr>
-    <td><a href="https://github.com/jaredreich" target="_blank">@jaredreich</a></td>
-    <td>for the logo</td>
+    <td><a href="https://github.com/KonstantinRogozhkin" target="_blank">@KonstantinRogozhkin</a></td>
+    <td>основатель проекта</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/PalinuroSec" target="_blank">@PalinuroSec</a></td>
-    <td>for CDN and domain name</td>
+    <td><a href="https://openai.com" target="_blank">OpenAI</a></td>
+    <td>за технологии, которые делают наш продукт возможным</td>
   </tr>
   <tr>
-    <td><a href="https://www.macstadium.com" target="_blank"><img src="https://images.prismic.io/macstadium/66fbce64-707e-41f3-b547-241908884716_MacStadium_Logo.png?w=128&q=75" width="128" height="49" alt="MacStadium logo" /></a></td>
-    <td>for providing a Mac mini M1</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/daiyam" target="_blank">@daiyam</a></td>
-    <td>for macOS certificate</td>
-  </tr>
-  <tr>
-    <td><a href="https://signpath.org/" target="_blank"><img src="https://avatars.githubusercontent.com/u/34448643" height="30" alt="SignPath logo" /></a></td>
-    <td>free code signing on Windows provided by <a href="https://signpath.io/" target="_blank">SignPath.io</a>, certificate by <a href="https://signpath.org/" target="_blank">SignPath Foundation</a></td>
+    <td>Нашим первым пользователям</td>
+    <td>за ценные отзывы и поддержку</td>
   </tr>
 </table>
 
-## <a id="license"></a>License
+## <a id="license"></a>Лицензия
 
-[MIT](https://github.com/VSCodium/vscodium/blob/master/LICENSE)
+[MIT](https://github.com/KonstantinRogozhkin/researcherry/blob/master/LICENSE)

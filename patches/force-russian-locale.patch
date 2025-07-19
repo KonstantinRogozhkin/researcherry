@@ -1,0 +1,14 @@
+diff --git a/src/main.ts b/src/main.ts
+index xxxxxxx..xxxxxxx 100644
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -221,6 +221,10 @@ async function startup(codeCachePath: string | undefined, nlsConfig: INLSConfigur
+ {
++	// --- Researcherry Customization ---
++	// Force Russian locale by default
++	nlsConfig.locale = 'ru';
++	nlsConfig.resolvedLanguage = 'ru';
++	
+ 	process.env['VSCODE_NLS_CONFIG'] = JSON.stringify(nlsConfig);
+ 	process.env['VSCODE_CODE_CACHE_PATH'] = codeCachePath || '';
+ 	resolveUserProduct();

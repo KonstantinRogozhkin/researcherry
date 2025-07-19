@@ -7,19 +7,16 @@
 
 <div id="badges" align="center">
 
-[![current release](https://img.shields.io/github/release/vscodium/vscodium.svg)](https://github.com/vscodium/vscodium/releases)
-[![license](https://img.shields.io/github/license/VSCodium/vscodium.svg)](https://github.com/VSCodium/vscodium/blob/master/LICENSE)
-[![Gitter](https://img.shields.io/gitter/room/vscodium/vscodium.svg)](https://gitter.im/VSCodium/Lobby)
-[![codium](https://snapcraft.io//codium/badge.svg)](https://snapcraft.io/codium)
-[![codium](https://snapcraft.io//codium/trending.svg?name=0)](https://snapcraft.io/codium)
+[![current release](https://img.shields.io/github/release/KonstantinRogozhkin/researcherry.svg)](https://github.com/KonstantinRogozhkin/researcherry/releases)
+[![license](https://img.shields.io/github/license/KonstantinRogozhkin/researcherry.svg)](https://github.com/KonstantinRogozhkin/researcherry/blob/master/LICENSE)
 
-[![build status (linux)](https://img.shields.io/github/actions/workflow/status/VSCodium/vscodium/stable-linux.yml?branch=master&label=build%28linux%29)](https://github.com/VSCodium/vscodium/actions/workflows/stable-linux.yml?query=branch%3Amaster)
-[![build status (macos)](https://img.shields.io/github/actions/workflow/status/VSCodium/vscodium/stable-macos.yml?branch=master&label=build%28macOS%29)](https://github.com/VSCodium/vscodium/actions/workflows/stable-macos.yml?query=branch%3Amaster)
-[![build status (windows)](https://img.shields.io/github/actions/workflow/status/VSCodium/vscodium/stable-windows.yml?branch=master&label=build%28windows%29)](https://github.com/VSCodium/vscodium/actions/workflows/stable-windows.yml?query=branch%3Amaster)
+[![build status (linux)](https://img.shields.io/github/actions/workflow/status/KonstantinRogozhkin/researcherry/stable-linux.yml?branch=master&label=build%28linux%29)](https://github.com/KonstantinRogozhkin/researcherry/actions/workflows/stable-linux.yml?query=branch%3Amaster)
+[![build status (macos)](https://img.shields.io/github/actions/workflow/status/KonstantinRogozhkin/researcherry/stable-macos.yml?branch=master&label=build%28macOS%29)](https://github.com/KonstantinRogozhkin/researcherry/actions/workflows/stable-macos.yml?query=branch%3Amaster)
+[![build status (windows)](https://img.shields.io/github/actions/workflow/status/KonstantinRogozhkin/researcherry/stable-windows.yml?branch=master&label=build%28windows%29)](https://github.com/KonstantinRogozhkin/researcherry/actions/workflows/stable-windows.yml?query=branch%3Amaster)
 
 </div>
 
-**ResearcherryAI — это no-code платформа, которая позволяет продуктовым командам и исследователям создавать и масштабировать AI-агентов для глубокого изучения клиентов. Эти агенты автоматизируют весь цикл исследования: анализируют коммуникации с пользователями, выявляют неудовлетворенные потребности, оценивают потенциальное влияние на выручку и предоставляют инсайты в реальном времени.**
+**ResearcherryAI — это экосистема, которая позволяет продуктовым командам и исследователям создавать и масштабировать AI-агентов для глубокого изучения клиентов. Эти агенты автоматизируют весь цикл исследования: анализируют коммуникации с пользователями, выявляют неудовлетворенные потребности, оценивают потенциальное влияние на выручку и предоставляют инсайты в реальном времени.**
 
 ## Содержание
 

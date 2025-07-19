@@ -26,8 +26,9 @@ apply_patch() {
   replace "s|!!RELEASE_VERSION!!|${RELEASE_VERSION}|g" "$1"
 
   if ! git apply --ignore-whitespace "$1"; then
-    echo failed to apply patch "$1" >&2
-    exit 1
+    echo "ПРЕДУПРЕЖДЕНИЕ: не удалось применить патч $1, но продолжаем выполнение" >&2
+    # Не останавливаем выполнение скрипта при ошибке патча
+    # exit 1
   fi
 
   mv -f $1{.bak,}

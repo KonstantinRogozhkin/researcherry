@@ -197,6 +197,13 @@ fi
 jsonTmp=$( jq -s '.[0] * .[1]' product.json ../product.json )
 echo "${jsonTmp}" > product.json && unset jsonTmp
 
+# --- Researcherry Customization ---
+# Add Russian Language Pack as a built-in extension.
+# Find the latest version on https://open-vsx.org/extension/ms-ceintl/vscode-language-pack-ru
+RU_LP='{"name": "ms-ceintl.vscode-language-pack-ru", "version": "1.90.0", "repo": "https://github.com/Microsoft/vscode-loc", "metadata": {"id": "3a2b2346-4896-40e9-8aed-9cc9c32b9d45", "publisherId": "ms-ceintl", "publisherDisplayName": "Microsoft"}}'
+jsonTmp=$( jq --argjson ru_lp "$RU_LP" '.builtInExtensions += [$ru_lp]' product.json )
+echo "${jsonTmp}" > product.json && unset jsonTmp
+
 cat product.json
 
 # package.json

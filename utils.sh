@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-APP_NAME="${APP_NAME:-VSCodium}"
+APP_NAME="${APP_NAME:-Researcherry}"
 APP_NAME_LC="$( echo "${APP_NAME}" | awk '{print tolower($0)}' )"
-ASSETS_REPOSITORY="${ASSETS_REPOSITORY:-VSCodium/vscodium}"
-BINARY_NAME="${BINARY_NAME:-codium}"
-GH_REPO_PATH="${GH_REPO_PATH:-VSCodium/vscodium}"
-ORG_NAME="${ORG_NAME:-VSCodium}"
+ASSETS_REPOSITORY="${ASSETS_REPOSITORY:-KonstantinRogozhkin/researcherry}"
+BINARY_NAME="${BINARY_NAME:-researcherry}"
+GH_REPO_PATH="${GH_REPO_PATH:-KonstantinRogozhkin/researcherry}"
+ORG_NAME="${ORG_NAME:-Researcherry}"
 
 # All common functions can be added to this file
 

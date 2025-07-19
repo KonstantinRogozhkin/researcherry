@@ -1,0 +1,30 @@
+diff --git a/node_modules/@vscode/gulp-electron/src/download.js b/node_modules/@vscode/gulp-electron/src/download.js
+index 1234567..abcdefg 100644
+--- a/node_modules/@vscode/gulp-electron/src/download.js
++++ b/node_modules/@vscode/gulp-electron/src/download.js
+@@ -1,7 +1,11 @@
+ "use strict";
+ 
+ var path = require("path");
+-const { downloadArtifact } = require("@electron/get");
++// Fix for ES module compatibility
++let downloadArtifact;
++(async () => {
++    const electronGet = await import("@electron/get");
++    downloadArtifact = electronGet.downloadArtifact;
++})();
+ const ProgressBar = require("progress");
+ var rename = require("gulp-rename");
+ var es = require("event-stream");
+@@ -20,6 +24,11 @@ function downloadElectron(options, cb) {
+         cb = options;
+         options = {};
+     }
++    
++    // Wait for dynamic import to complete
++    if (!downloadArtifact) {
++        return setTimeout(() => downloadElectron(options, cb), 100);
++    }
+ 
+     var platform = options.platform || process.platform;
+     var arch = options.arch || process.arch;

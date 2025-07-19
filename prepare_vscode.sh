@@ -168,30 +168,30 @@ if [[ "${VSCODE_QUALITY}" == "insider" ]]; then
   setpath "product" "win32TunnelServiceMutex" "vscodiuminsiders-tunnelservice"
   setpath "product" "win32TunnelMutex" "vscodiuminsiders-tunnel"
 else
-  setpath "product" "nameShort" "VSCodium"
-  setpath "product" "nameLong" "VSCodium"
-  setpath "product" "applicationName" "codium"
-  setpath "product" "linuxIconName" "vscodium"
+  setpath "product" "nameShort" "${APP_NAME}"
+  setpath "product" "nameLong" "${APP_NAME}"
+  setpath "product" "applicationName" "${BINARY_NAME}"
+  setpath "product" "linuxIconName" "${BINARY_NAME}"
   setpath "product" "quality" "stable"
-  setpath "product" "urlProtocol" "vscodium"
-  setpath "product" "serverApplicationName" "codium-server"
-  setpath "product" "serverDataFolderName" ".vscodium-server"
-  setpath "product" "darwinBundleIdentifier" "com.vscodium"
-  setpath "product" "win32AppUserModelId" "VSCodium.VSCodium"
-  setpath "product" "win32DirName" "VSCodium"
-  setpath "product" "win32MutexName" "vscodium"
-  setpath "product" "win32NameVersion" "VSCodium"
-  setpath "product" "win32RegValueName" "VSCodium"
-  setpath "product" "win32ShellNameShort" "VSCodium"
+  setpath "product" "urlProtocol" "${BINARY_NAME}"
+  setpath "product" "serverApplicationName" "${BINARY_NAME}-server"
+  setpath "product" "serverDataFolderName" ".${BINARY_NAME}-server"
+  setpath "product" "darwinBundleIdentifier" "com.${BINARY_NAME}"
+  setpath "product" "win32AppUserModelId" "${APP_NAME}.${APP_NAME}"
+  setpath "product" "win32DirName" "${APP_NAME}"
+  setpath "product" "win32MutexName" "${BINARY_NAME}"
+  setpath "product" "win32NameVersion" "${APP_NAME}"
+  setpath "product" "win32RegValueName" "${APP_NAME}"
+  setpath "product" "win32ShellNameShort" "${APP_NAME}"
   setpath "product" "win32AppId" "{{763CBF88-25C6-4B10-952F-326AE657F16B}"
   setpath "product" "win32x64AppId" "{{88DA3577-054F-4CA1-8122-7D820494CFFB}"
   setpath "product" "win32arm64AppId" "{{67DEE444-3D04-4258-B92A-BC1F0FF2CAE4}"
   setpath "product" "win32UserAppId" "{{0FD05EB4-651E-4E78-A062-515204B47A3A}"
   setpath "product" "win32x64UserAppId" "{{2E1F05D1-C245-4562-81EE-28188DB6FD17}"
   setpath "product" "win32arm64UserAppId" "{{57FD70A5-1B8D-4875-9F40-C5553F094828}"
-  setpath "product" "tunnelApplicationName" "codium-tunnel"
-  setpath "product" "win32TunnelServiceMutex" "vscodium-tunnelservice"
-  setpath "product" "win32TunnelMutex" "vscodium-tunnel"
+  setpath "product" "tunnelApplicationName" "${BINARY_NAME}-tunnel"
+  setpath "product" "win32TunnelServiceMutex" "${BINARY_NAME}-tunnelservice"
+  setpath "product" "win32TunnelMutex" "${BINARY_NAME}-tunnel"
 fi
 
 jsonTmp=$( jq -s '.[0] * .[1]' product.json ../product.json )
@@ -204,16 +204,16 @@ cp package.json{,.bak}
 
 setpath "package" "version" "${RELEASE_VERSION%-insider}"
 
-replace 's|Microsoft Corporation|VSCodium|' package.json
+replace "s|Microsoft Corporation|${ORG_NAME}|" package.json
 
 cp resources/server/manifest.json{,.bak}
 
 if [[ "${VSCODE_QUALITY}" == "insider" ]]; then
-  setpath "resources/server/manifest" "name" "VSCodium - Insiders"
-  setpath "resources/server/manifest" "short_name" "VSCodium - Insiders"
+  setpath "resources/server/manifest" "name" "${APP_NAME} - Insiders"
+  setpath "resources/server/manifest" "short_name" "${APP_NAME} - Insiders"
 else
-  setpath "resources/server/manifest" "name" "VSCodium"
-  setpath "resources/server/manifest" "short_name" "VSCodium"
+  setpath "resources/server/manifest" "name" "${APP_NAME}"
+  setpath "resources/server/manifest" "short_name" "${APP_NAME}"
 fi
 
 # announcements
@@ -221,10 +221,10 @@ replace "s|\\[\\/\\* BUILTIN_ANNOUNCEMENTS \\*\\/\\]|$( tr -d '\n' < ../announce
 
 ../undo_telemetry.sh
 
-replace 's|Microsoft Corporation|VSCodium|' build/lib/electron.js
-replace 's|Microsoft Corporation|VSCodium|' build/lib/electron.ts
-replace 's|([0-9]) Microsoft|\1 VSCodium|' build/lib/electron.js
-replace 's|([0-9]) Microsoft|\1 VSCodium|' build/lib/electron.ts
+replace "s|Microsoft Corporation|${ORG_NAME}|" build/lib/electron.js
+replace "s|Microsoft Corporation|${ORG_NAME}|" build/lib/electron.ts
+replace "s|([0-9]) Microsoft|\1 ${ORG_NAME}|" build/lib/electron.js
+replace "s|([0-9]) Microsoft|\1 ${ORG_NAME}|" build/lib/electron.ts
 
 if [[ "${OS_NAME}" == "linux" ]]; then
   # microsoft adds their apt repo to sources
@@ -232,37 +232,37 @@ if [[ "${OS_NAME}" == "linux" ]]; then
   # as we are renaming the application to vscodium
   # we need to edit a line in the post install template
   if [[ "${VSCODE_QUALITY}" == "insider" ]]; then
-    sed -i "s/code-oss/codium-insiders/" resources/linux/debian/postinst.template
+    sed -i "s/code-oss/${BINARY_NAME}-insiders/" resources/linux/debian/postinst.template
   else
-    sed -i "s/code-oss/codium/" resources/linux/debian/postinst.template
+    sed -i "s/code-oss/${BINARY_NAME}/" resources/linux/debian/postinst.template
   fi
 
   # fix the packages metadata
   # code.appdata.xml
-  sed -i 's|Visual Studio Code|VSCodium|g' resources/linux/code.appdata.xml
-  sed -i 's|https://code.visualstudio.com/docs/setup/linux|https://github.com/VSCodium/vscodium#download-install|' resources/linux/code.appdata.xml
-  sed -i 's|https://code.visualstudio.com/home/home-screenshot-linux-lg.png|https://vscodium.com/img/vscodium.png|' resources/linux/code.appdata.xml
-  sed -i 's|https://code.visualstudio.com|https://vscodium.com|' resources/linux/code.appdata.xml
+  sed -i "s|Visual Studio Code|${APP_NAME}|g" resources/linux/code.appdata.xml
+  sed -i "s|https://code.visualstudio.com/docs/setup/linux|https://github.com/${GH_REPO_PATH}#download-install|" resources/linux/code.appdata.xml
+  sed -i "s|https://code.visualstudio.com/home/home-screenshot-linux-lg.png|https://github.com/${GH_REPO_PATH}/raw/main/icons/stable/${BINARY_NAME}_cnl.png|" resources/linux/code.appdata.xml
+  sed -i "s|https://code.visualstudio.com|https://github.com/${GH_REPO_PATH}|" resources/linux/code.appdata.xml
 
   # control.template
-  sed -i 's|Microsoft Corporation <vscode-linux@microsoft.com>|VSCodium Team https://github.com/VSCodium/vscodium/graphs/contributors|'  resources/linux/debian/control.template
-  sed -i 's|Visual Studio Code|VSCodium|g' resources/linux/debian/control.template
-  sed -i 's|https://code.visualstudio.com/docs/setup/linux|https://github.com/VSCodium/vscodium#download-install|' resources/linux/debian/control.template
-  sed -i 's|https://code.visualstudio.com|https://vscodium.com|' resources/linux/debian/control.template
+  sed -i "s|Microsoft Corporation <vscode-linux@microsoft.com>|${ORG_NAME} Team https://github.com/${GH_REPO_PATH}/graphs/contributors|"  resources/linux/debian/control.template
+  sed -i "s|Visual Studio Code|${APP_NAME}|g" resources/linux/debian/control.template
+  sed -i "s|https://code.visualstudio.com/docs/setup/linux|https://github.com/${GH_REPO_PATH}#download-install|" resources/linux/debian/control.template
+  sed -i "s|https://code.visualstudio.com|https://github.com/${GH_REPO_PATH}|" resources/linux/debian/control.template
 
   # code.spec.template
-  sed -i 's|Microsoft Corporation|VSCodium Team|' resources/linux/rpm/code.spec.template
-  sed -i 's|Visual Studio Code Team <vscode-linux@microsoft.com>|VSCodium Team https://github.com/VSCodium/vscodium/graphs/contributors|' resources/linux/rpm/code.spec.template
-  sed -i 's|Visual Studio Code|VSCodium|' resources/linux/rpm/code.spec.template
-  sed -i 's|https://code.visualstudio.com/docs/setup/linux|https://github.com/VSCodium/vscodium#download-install|' resources/linux/rpm/code.spec.template
-  sed -i 's|https://code.visualstudio.com|https://vscodium.com|' resources/linux/rpm/code.spec.template
+  sed -i "s|Microsoft Corporation|${ORG_NAME} Team|" resources/linux/rpm/code.spec.template
+  sed -i "s|Visual Studio Code Team <vscode-linux@microsoft.com>|${ORG_NAME} Team https://github.com/${GH_REPO_PATH}/graphs/contributors|" resources/linux/rpm/code.spec.template
+  sed -i "s|Visual Studio Code|${APP_NAME}|" resources/linux/rpm/code.spec.template
+  sed -i "s|https://code.visualstudio.com/docs/setup/linux|https://github.com/${GH_REPO_PATH}#download-install|" resources/linux/rpm/code.spec.template
+  sed -i "s|https://code.visualstudio.com|https://github.com/${GH_REPO_PATH}|" resources/linux/rpm/code.spec.template
 
   # snapcraft.yaml
-  sed -i 's|Visual Studio Code|VSCodium|'  resources/linux/rpm/code.spec.template
+  sed -i "s|Visual Studio Code|${APP_NAME}|"  resources/linux/rpm/code.spec.template
 elif [[ "${OS_NAME}" == "windows" ]]; then
   # code.iss
-  sed -i 's|https://code.visualstudio.com|https://vscodium.com|' build/win32/code.iss
-  sed -i 's|Microsoft Corporation|VSCodium|' build/win32/code.iss
+  sed -i "s|https://code.visualstudio.com|https://github.com/${GH_REPO_PATH}|" build/win32/code.iss
+  sed -i "s|Microsoft Corporation|${ORG_NAME}|" build/win32/code.iss
 fi
 
 cd ..

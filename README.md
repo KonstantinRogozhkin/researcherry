@@ -1,8 +1,8 @@
-<div id="vscodium-logo" align="center">
+<div id="researcherry-logo" align="center">
     <br />
-    <img src="./icons/stable/codium_cnl.svg" alt="VSCodium Logo" width="200"/>
-    <h1>VSCodium</h1>
-    <h3>Free/Libre Open Source Software Binaries of Visual Studio Code</h3>
+    <img src="./icons/stable/researcherry_cnl.svg" alt="Researcherry Logo" width="200"/>
+    <h1>Researcherry</h1>
+    <h3>Research-Focused Code Editor Based on Visual Studio Code</h3>
 </div>
 
 <div id="badges" align="center">
@@ -19,7 +19,7 @@
 
 </div>
 
-**This is not a fork. This is a repository of scripts to automatically build [Microsoft's `vscode` repository](https://github.com/microsoft/vscode) into freely-licensed binaries with a community-driven default configuration.**
+**Researcherry is a research-focused code editor built on top of Visual Studio Code. It provides enhanced tools and features specifically designed for researchers, data scientists, and academic professionals.**
 
 ## Table of Contents
 

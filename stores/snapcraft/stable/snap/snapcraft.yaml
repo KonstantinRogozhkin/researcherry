@@ -1,8 +1,8 @@
-name: codium
-adopt-info: codium
-summary: Code editing. Redefined.
+name: researcherry
+adopt-info: researcherry
+summary: Research-focused code editor
 description: |
-  Binary releases of Visual Studio Code without branding/telemetry/licensing
+  Research-focused code editor built on top of Visual Studio Code with enhanced tools for researchers and data scientists
 
 base: core20
 grade: stable
@@ -10,12 +10,12 @@ confinement: classic
 compression: lzo
 
 parts:
-  codium:
+  researcherry:
     plugin: nil
     override-build: |
       set -eu
       # Get .deb url
-      wget --quiet https://api.github.com/repos/VSCodium/vscodium/releases -O latest.json
+      wget --quiet https://api.github.com/repos/KonstantinRogozhkin/researcherry/releases -O latest.json
       VERSION=$( jq -r 'sort_by(.tag_name|split(".")|map(tonumber))|last.tag_name' latest.json )
       DEB_URL=$( jq -r 'map(select(.tag_name == "'"${VERSION}"'"))|first.assets[].browser_download_url|select(endswith("'"_${SNAPCRAFT_TARGET_ARCH}.deb"'"))' latest.json )
       DEB_NAME=$( basename "${DEB_URL}" )

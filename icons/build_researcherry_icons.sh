@@ -16,8 +16,8 @@ check_programs() {
 check_programs "convert" "png2icns" "icotool"
 
 # Пути к файлам
-PNG_LOGO="icons/re-high-resolution-logo.png"
-PNG_LOGO_TRANSPARENT="icons/re-high-resolution-logo-transparent.png"
+PNG_LOGO="icons/researcherry-high-resolution-logo (2).png"
+PNG_LOGO_TRANSPARENT="icons/researcherry-high-resolution-logo (2).png"
 QUALITY="stable"
 SRC_PREFIX=""
 

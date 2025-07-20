@@ -1,0 +1,9 @@
+{
+    "name": "Разработчик",
+    "settings": {
+        "workbench.panel.hidden": false,
+        "workbench.view.scm.visible": true,
+        "workbench.view.debug.visible": true,
+        "workbench.view.remote.visible": true
+    }
+}

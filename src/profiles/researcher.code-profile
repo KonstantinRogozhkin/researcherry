@@ -1,0 +1,19 @@
+{
+    "name": "Исследователь",
+    "settings": {
+        "workbench.activityBar.visible": true,
+        "workbench.sideBar.location": "left",
+        "workbench.statusBar.visible": true,
+        "workbench.panel.location": "bottom",
+        "workbench.panel.hidden": true,
+        "workbench.view.scm.visible": false,
+        "workbench.view.debug.visible": false,
+        "workbench.view.remote.visible": false
+    },
+    "extensions": {
+        "disabled": [
+            "vscode.git",
+            "ms-vscode.js-debug"
+        ]
+    }
+}

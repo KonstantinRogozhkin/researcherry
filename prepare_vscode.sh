@@ -200,9 +200,10 @@ echo "${jsonTmp}" > product.json && unset jsonTmp
 # --- Researcherry Customization ---
 # Add Russian Language Pack as a built-in extension.
 # Find the latest version on https://open-vsx.org/extension/ms-ceintl/vscode-language-pack-ru
-RU_LP='{"name": "ms-ceintl.vscode-language-pack-ru", "version": "1.90.0", "repo": "https://github.com/Microsoft/vscode-loc", "metadata": {"id": "3a2b2346-4896-40e9-8aed-9cc9c32b9d45", "publisherId": "ms-ceintl", "publisherDisplayName": "Microsoft"}}'
-jsonTmp=$( jq --argjson ru_lp "$RU_LP" '.builtInExtensions += [$ru_lp]' product.json )
-echo "${jsonTmp}" > product.json && unset jsonTmp
+# Временно отключено для dev-сборки
+# RU_LP='{"name": "ms-ceintl.vscode-language-pack-ru", "version": "1.98.2025022817", "repo": "https://github.com/Microsoft/vscode-loc", "metadata": {"id": "3a2b2346-4896-40e9-8aed-9cc9c32b9d45", "publisherId": "ms-ceintl", "publisherDisplayName": "Microsoft"}}'
+# jsonTmp=$( jq --argjson ru_lp "$RU_LP" '.builtInExtensions += [$ru_lp]' product.json )
+# echo "${jsonTmp}" > product.json && unset jsonTmp
 
 cat product.json
 
@@ -256,6 +257,12 @@ if [[ "${OS_NAME}" == "linux" ]]; then
   sed -i "s|Visual Studio Code|${APP_NAME}|g" resources/linux/debian/control.template
   sed -i "s|https://code.visualstudio.com/docs/setup/linux|https://github.com/${GH_REPO_PATH}#download-install|" resources/linux/debian/control.template
   sed -i "s|https://code.visualstudio.com|https://github.com/${GH_REPO_PATH}|" resources/linux/debian/control.template
+
+  # Копируем файлы профилей для Researcherry
+  echo "Copying Researcherry profiles..."
+  mkdir -p resources/app/profiles
+  cp -f "${ROOT}/src/profiles/researcher.code-profile" resources/app/profiles/
+  cp -f "${ROOT}/src/profiles/developer.code-profile" resources/app/profiles/
 
   # code.spec.template
   sed -i "s|Microsoft Corporation|${ORG_NAME} Team|" resources/linux/rpm/code.spec.template

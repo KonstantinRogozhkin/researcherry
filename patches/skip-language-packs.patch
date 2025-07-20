@@ -1,0 +1,18 @@
+diff --git a/build/lib/builtInExtensions.js b/build/lib/builtInExtensions.js
+index 1234567..abcdefg 100644
+--- a/build/lib/builtInExtensions.js
++++ b/build/lib/builtInExtensions.js
+@@ -143,6 +143,12 @@ function syncExtension(extension, controlState) {
+         }
+     }
+     switch (controlState) {
++        // Пропускаем языковые пакеты, чтобы избежать ошибок при сборке
++        case 'marketplace':
++            if (extension.name.startsWith('ms-ceintl.vscode-language-pack-')) {
++                log(ansi_colors_1.default.blue('[skipped]'), `${extension.name}@${extension.version}: Language pack skipped`, ansi_colors_1.default.green('✔︎'));
++                return event_stream_1.default.readArray([]);
++            }
++            return syncMarketplaceExtension(extension);
+         case 'disabled':
+             log(ansi_colors_1.default.blue('[disabled]'), ansi_colors_1.default.gray(extension.name));
+             return event_stream_1.default.readArray([]);

@@ -1,0 +1,15 @@
+diff --git a/build/lib/i18n.js b/build/lib/i18n.js
+index 2b1f9d7a5c..5e1f9d7a5c 100644
+--- a/build/lib/i18n.js
++++ b/build/lib/i18n.js
+@@ -242,6 +242,10 @@ function stripComments(content) {
+ function processCoreBundleFormat(base, fileHeader, languages, json, emitter) {
+     const languageDirectory = path_1.default.join(REPO_ROOT_PATH, '..', 'vscode-loc', 'i18n');
+     if (!fs_1.default.existsSync(languageDirectory)) {
++        // Если директория локализации не существует, просто создаем пустой файл nls.messages.js для каждого языка
++        for (const language of sortLanguages(languages)) {
++            emitter.queue(new vinyl_1.default({ contents: Buffer.from(`${fileHeader}\nglobalThis._VSCODE_NLS_MESSAGES=[];\nglobalThis._VSCODE_NLS_LANGUAGE=${JSON.stringify(language.id)};`), base, path: `${base}/nls.messages.${language.id}.js` }));
++        }
+         log(`No VS Code localization repository found. Looking at ${languageDirectory}`);
+         log(`To bundle translations please check out the vscode-loc repository as a sibling of the vscode repository.`);
+     }

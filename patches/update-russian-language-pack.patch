@@ -1,0 +1,13 @@
+diff --git a/product.json b/product.json
+index 1234567..abcdefg 100644
+--- a/product.json
++++ b/product.json
+@@ -84,7 +84,7 @@
+     },
+     {
+       "name": "ms-ceintl.vscode-language-pack-ru",
+-      "version": "1.90.0",
++      "version": "1.99.0",
+       "repo": "https://github.com/Microsoft/vscode-loc",
+       "metadata": {
+         "id": "3a2b2346-4896-40e9-8aed-9cc9c32b9d45",

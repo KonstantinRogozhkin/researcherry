@@ -421,6 +421,13 @@
       "liveServer.setup.version"
     ]
   },
+  "builtinExtensions": [
+    {
+      "name": "Continue.continue",
+      "version": "latest",
+      "repo": "https://marketplace.windsurf.com/vscode/item?itemName=Continue.continue"
+    }
+  ],
   "extensionVirtualWorkspacesSupport": {
     "esbenp.prettier-vscode": {
       "default": false

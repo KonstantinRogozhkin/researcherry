@@ -1,23 +1,23 @@
 <!-- order: 35 -->
 
-# How to build VSCodium
+# Как собрать Researcherry
 
-## Table of Contents
+## Содержание
 
-- [Dependencies](#dependencies)
+- [Зависимости](#dependencies)
   - [Linux](#dependencies-linux)
   - [MacOS](#dependencies-macos)
   - [Windows](#dependencies-windows)
-- [Build for Development](#build-dev)
-- [Build for CI/Downstream](#build-ci)
-- [Build Snap](#build-snap)
-- [Patch Update Process](#patch-update-process)
-  - [Semi-Automated](#patch-update-process-semiauto)
-  - [Manual](#patch-update-process-manual)
+- [Сборка для разработки](#build-dev)
+- [Сборка для CI/Downstream](#build-ci)
+- [Сборка Snap](#build-snap)
+- [Процесс обновления патчей](#patch-update-process)
+  - [Полуавтоматический](#patch-update-process-semiauto)
+  - [Ручной](#patch-update-process-manual)
 
-## <a id="dependencies"></a>Dependencies
+## <a id="dependencies"></a>Зависимости
 
-- node 20.18
+- node 22.15.1 (критически важно для Researcherry)
 - jq
 - git
 - python3 3.11
@@ -37,12 +37,16 @@
 - rpm
 - rpmbuild
 - dpkg
-- imagemagick (for AppImage)
+- imagemagick (для AppImage и генерации иконок)
 - snapcraft
+- png2icns (для генерации иконок macOS)
+- librsvg (для работы с SVG)
 
 ### <a id="dependencies-macos"></a>MacOS
 
-see [the common dependencies](#dependencies)
+См. [общие зависимости](#dependencies), плюс:
+- Xcode Command Line Tools
+- png2icns (`npm install png2icns -g`)
 
 ### <a id="dependencies-windows"></a>Windows
 
@@ -50,38 +54,54 @@ see [the common dependencies](#dependencies)
 - sed
 - 7z
 - [WiX Toolset](http://wixtoolset.org/releases/)
-- 'Tools for Native Modules' from the official Node.js installer
+- 'Tools for Native Modules' из официального установщика Node.js
+- icotool (для генерации иконок Windows)
 
-## <a id="build-dev"></a>Build for Development
+## <a id="build-dev"></a>Сборка для разработки
 
-A build helper script can be found at `dev/build.sh`.
+### Быстрый старт
+
+```bash
+# Инициализация проекта (только при первом запуске)
+./init_project.sh
+
+# Генерация иконок из PNG
+./icons/generate_icons.sh --source icons/icon.png
+
+# Сборка проекта
+./dev/build.sh
+```
+
+### Подробная сборка
+
+Вспомогательный скрипт сборки находится в `dev/build.sh`.
 
 - Linux: `./dev/build.sh`
 - MacOS: `./dev/build.sh`
-- Windows: `powershell -ExecutionPolicy ByPass -File .\dev\build.ps1` or `"C:\Program Files\Git\bin\bash.exe" ./dev/build.sh`
+- Windows: `powershell -ExecutionPolicy ByPass -File .\dev\build.ps1` или `"C:\Program Files\Git\bin\bash.exe" ./dev/build.sh`
 
-### Insider
+### Insider версия
 
-The `insider` version can be built with `./dev/build.sh -i` on the `insider` branch.
+Версия `insider` может быть собрана с помощью `./dev/build.sh -i` на ветке `insider`.
 
-You can try the latest version with the command `./dev/build.sh -il` but the patches might not be up to date.
+Вы можете попробовать последнюю версию с командой `./dev/build.sh -il`, но патчи могут быть не актуальными.
 
-### Flags
+### Флаги
 
-The script `dev/build.sh` provides several flags:
+Скрипт `dev/build.sh` предоставляет несколько флагов:
 
-- `-i`: build the Insiders version
-- `-l`: build with latest version of Visual Studio Code
-- `-o`: skip the build step
-- `-p`: generate the packages/assets/installers
-- `-s`: do not retrieve the source code of Visual Studio Code, it won't delete the existing build
+- `-i`: собрать Insiders версию
+- `-l`: собрать с последней версией Visual Studio Code
+- `-o`: пропустить этап сборки
+- `-p`: генерировать пакеты/ресурсы/установщики
+- `-s`: не получать исходный код Visual Studio Code, не удалять существующую сборку
 
-## <a id="build-ci"></a>Build for CI/Downstream
+## <a id="build-ci"></a>Сборка для CI/Downstream
 
-Here is the base script to build VSCodium:
+Базовый скрипт для сборки Researcherry:
 
 ```bash
-# Export necessary environment variables
+# Экспорт необходимых переменных окружения
 export SHOULD_BUILD="yes"
 export SHOULD_BUILD_REH="no"
 export CI_BUILD="no"
@@ -94,55 +114,118 @@ export RELEASE_VERSION="${version}"
 . build.sh
 ```
 
-To go further, you should look at how we build it:
-- Linux: https://github.com/VSCodium/vscodium/blob/master/.github/workflows/stable-linux.yml
-- macOS: https://github.com/VSCodium/vscodium/blob/master/.github/workflows/stable-macos.yml
-- Windows: https://github.com/VSCodium/vscodium/blob/master/.github/workflows/stable-windows.yml
+Для более подробной информации посмотрите, как мы собираем проект:
+- Linux: https://github.com/KonstantinRogozhkin/researcherry/blob/master/.github/workflows/stable-linux.yml
+- macOS: https://github.com/KonstantinRogozhkin/researcherry/blob/master/.github/workflows/stable-macos.yml
+- Windows: https://github.com/KonstantinRogozhkin/researcherry/blob/master/.github/workflows/stable-windows.yml
 
-The `./dev/build.sh` script is for development purpose and must be avoided for a packaging purpose.
+Скрипт `./dev/build.sh` предназначен для разработки и должен быть исключен из процесса упаковки.
 
-## <a id="build-snap"></a>Build Snap
+## <a id="build-snap"></a>Сборка Snap
 
-```
-# for the stable version
+```bash
+# для стабильной версии
 cd ./stores/snapcraft/stable
 
-# for the insider version
+# для insider версии
 cd ./stores/snapcraft/insider
 
-# create the snap
+# создать snap
 snapcraft --use-lxd
 
-# verify the snap
-review-tools.snap-review --allow-classic codium*.snap
+# проверить snap
+review-tools.snap-review --allow-classic researcherry*.snap
 ```
 
-## <a id="patch-update-process"></a>Patch Update Process
+## <a id="patch-update-process"></a>Процесс обновления патчей
 
-## <a id="patch-update-process-semiauto"></a>Semi-Automated
+## <a id="patch-update-process-semiauto"></a>Полуавтоматический
 
-- run `./dev/build.sh`, if a patch is failing then,
-- run `./dev/update_patches.sh`
-- when the script pauses at `Press any key when the conflict have been resolved...`, open `vscode` directory in **VSCodium**
-- fix all the `*.rej` files
-- run `npm run watch`
-- run `./script/code.sh` until everything is ok
-- press any key to continue the script `update_patches.sh`
+- запустите `./dev/build.sh`, если патч не применяется, то:
+- запустите `./dev/update_patches.sh`
+- когда скрипт остановится на `Press any key when the conflict have been resolved...`, откройте директорию `vscode` в **Researcherry**
+- исправьте все файлы `*.rej`
+- запустите `npm run watch`
+- запустите `./script/code.sh` пока все не будет работать
+- нажмите любую клавишу для продолжения скрипта `update_patches.sh`
 
-## <a id="patch-update-process-manual"></a>Manual
+## <a id="patch-update-process-manual"></a>Ручной
 
-- run `./dev/build.sh`, if a patch is failing then,
-- run `./dev/patch.sh <name>.patch` where `<name>.patch` is the failed patch
-- open `vscode` directory in a new **VSCodium**'s window
-- fix all the `*.rej` files
-- run `npm run watch`
-- run `./script/code.sh` until everything is ok
-- go back to the command line running `./dev/patch.sh`, press `enter` to validate the changes and it will update the patch
+- запустите `./dev/build.sh`, если патч не применяется, то:
+- запустите `./dev/patch.sh <name>.patch`, где `<name>.patch` — неудачный патч
+- откройте директорию `vscode` в новом окне **Researcherry**
+- исправьте все файлы `*.rej`
+- запустите `npm run watch`
+- запустите `./script/code.sh` пока все не будет работать
+- вернитесь к командной строке, запускающей `./dev/patch.sh`, нажмите `enter` для подтверждения изменений, и патч будет обновлен
 
-### <a id="icons"></a>icons/build_icons.sh
+### Исправление проблем с патчами
 
-To run `icons/build_icons.sh`, you will need:
+Если у вас возникают проблемы с патчами, используйте наши вспомогательные скрипты:
 
-- imagemagick
+```bash
+# Исправление проблемных патчей
+./fix_patches.sh
+
+# Полный сброс проекта
+./reset_project.sh
+
+# Повторная инициализация
+./init_project.sh
+```
+
+### <a id="icons"></a>Генерация иконок
+
+Для генерации иконок используйте унифицированный скрипт:
+
+```bash
+# Генерация всех иконок из PNG
+./icons/generate_icons.sh --source icons/icon.png
+
+# Генерация с пользовательскими параметрами
+./icons/generate_icons.sh --source my-logo.png --quality insider
+```
+
+Для работы скрипта генерации иконок необходимо:
+
+- imagemagick (команда `magick`)
 - png2icns (`npm install png2icns -g`)
-- librsvg
+- icotool (для Windows иконок)
+- librsvg (для работы с SVG, если используется)
+
+## Решение проблем
+
+### Проблемы с Node.js версией
+
+Researcherry требует точно Node.js v22.15.1. Другие версии могут вызвать ошибки сборки:
+
+```bash
+# Проверить версию
+node --version
+
+# Установить правильную версию через nvm
+nvm install 22.15.1
+nvm use 22.15.1
+```
+
+### Проблемы с патчами
+
+Если патчи не применяются:
+
+1. Убедитесь, что директория `vscode` чистая
+2. Запустите `./fix_patches.sh`
+3. При необходимости используйте `./reset_project.sh` для полного сброса
+
+### Проблемы с иконками
+
+Если возникают ошибки при генерации иконок:
+
+1. Убедитесь, что установлены все зависимости для генерации иконок
+2. Проверьте, что исходный PNG файл существует и доступен для чтения
+3. Используйте флаг `--help` для получения справки по скрипту
+
+## Дополнительные ресурсы
+
+- [Руководство по решению проблем сборки](../BUILD_TROUBLESHOOTING.md)
+- [Документация для разработчиков](./documentation.md)
+- [Объяснение патчей](./patch-explanation.md)

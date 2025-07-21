@@ -1,50 +1,115 @@
 <!-- order: 5 -->
 
-# Getting Started with VSCodium
+# Быстрый старт с Researcherry
 
-This guide will help you get started with VSCodium.
+Это руководство поможет вам начать работу с Researcherry — no-code платформой AI-агентов для исследования клиентов.
 
-## Table of Contents
+## Содержание
 
-- [Installation](#installation)
-- [First Steps](#first-steps)
-- [Basic Usage](#basic-usage)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [Next Steps](#next-steps)
+- [Установка](#installation)
+- [Первые шаги](#first-steps)
+- [Основы использования](#basic-usage)
+- [Горячие клавиши](#keyboard-shortcuts)
+- [Дальнейшие шаги](#next-steps)
+- [Разработка](#development)
 
-## <a id="installation"></a>Installation
+## <a id="installation"></a>Установка
 
-VSCodium can be installed on Windows, macOS, and Linux. Visit the [download page](https://vscodium.com/#install) for installation instructions.
+Researcherry можно установить на Windows, macOS и Linux. Посетите [страницу загрузок](https://github.com/KonstantinRogozhkin/researcherry/releases) для получения инструкций по установке.
 
-## <a id="first-steps"></a>First Steps
+### Системные требования
 
-After installing VSCodium, here are some first steps to get started:
+- **Node.js:** v22.15.1 (критически важно для сборки)
+- **npm:** v10.9.2+
+- **Git:** для работы с репозиторием
 
-1. **Open a folder**: Use File > Open Folder to open your project
-2. **Install extensions**: Click on the Extensions icon in the sidebar to browse and install extensions
-3. **Configure settings**: Use File > Preferences > Settings to customize your editor
+## <a id="first-steps"></a>Первые шаги
 
-## <a id="basic-usage"></a>Basic Usage
+После установки Researcherry выполните следующие действия:
 
-VSCodium works just like Visual Studio Code, with a few differences:
+1. **Откройте папку проекта**: Используйте Файл > Открыть папку для открытия вашего исследовательского проекта
+2. **Выберите профиль**: При первом запуске автоматически установится профиль "Исследователь". Вы можете переключиться на профиль "Разработчик" через Command Palette
+3. **Установите расширения**: Нажмите на иконку Расширения в боковой панели для поиска и установки расширений
+4. **Настройте параметры**: Используйте Файл > Настройки > Параметры для настройки редактора
 
-- It uses Open VSX for extensions by default instead of the Visual Studio Marketplace
-- It doesn't include Microsoft telemetry or branding
-- Some proprietary features may not be available
+## <a id="basic-usage"></a>Основы использования
 
-## <a id="keyboard-shortcuts"></a>Keyboard Shortcuts
+Researcherry построен на основе VSCodium с важными отличиями:
 
-Here are some essential keyboard shortcuts to get you started:
+- **Профили пользователей**: Автоматическое переключение между режимами "Исследователь" и "Разработчик"
+- **AI-агенты**: Встроенная поддержка создания и управления AI-агентами для исследования клиентов
+- **Русская локализация**: Полная поддержка русского языка
+- **Приватность**: Отсутствие телеметрии Microsoft и облачной синхронизации
+- **Open VSX**: Использует Open VSX для расширений вместо Visual Studio Marketplace
 
-- `Ctrl+P` (Windows/Linux) or `Cmd+P` (macOS): Quick Open, Go to File
-- `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS): Show Command Palette
-- `Ctrl+,` (Windows/Linux) or `Cmd+,` (macOS): User Settings
-- `Ctrl+K Ctrl+S` (Windows/Linux) or `Cmd+K Cmd+S` (macOS): Keyboard Shortcuts
+### Ключевые возможности
 
-## <a id="next-steps"></a>Next Steps
+- **Анализ интервью**: AI-агенты автоматически анализируют интервью с клиентами
+- **Планирование исследований**: Организация и планирование интервью с пользователями
+- **Формулирование инсайтов**: Автоматическая генерация и верификация инсайтов
+- **Оценка влияния**: Анализ влияния предлагаемых изменений на бизнес-метрики
 
-Once you're comfortable with the basics, you might want to:
+## <a id="keyboard-shortcuts"></a>Горячие клавиши
 
-- Explore the [documentation](https://github.com/VSCodium/vscodium/blob/master/docs/index.md) for more details
-- Join the [community](https://github.com/VSCodium/vscodium/discussions) to ask questions and share tips
-- Contribute to the [project](https://github.com/VSCodium/vscodium/blob/master/CONTRIBUTING.md) if you're interested
+Основные горячие клавиши для работы:
+
+- `Ctrl+P` (Windows/Linux) или `Cmd+P` (macOS): Быстрое открытие файлов
+- `Ctrl+Shift+P` (Windows/Linux) или `Cmd+Shift+P` (macOS): Палитра команд
+- `Ctrl+,` (Windows/Linux) или `Cmd+,` (macOS): Настройки пользователя
+- `Ctrl+K Ctrl+S` (Windows/Linux) или `Cmd+K Cmd+S` (macOS): Горячие клавиши
+
+### Специальные команды Researcherry
+
+- **Переключить на профиль "Исследователь"**: Доступно через палитру команд
+- **Переключить на профиль "Разработчик"**: Доступно через палитру команд
+
+## <a id="next-steps"></a>Дальнейшие шаги
+
+После освоения основ рекомендуем:
+
+- Изучить [подробную документацию](./documentation.md) для получения дополнительной информации
+- Присоединиться к [сообществу](https://github.com/KonstantinRogozhkin/researcherry/discussions) для вопросов и обмена опытом
+- Внести вклад в [проект](https://github.com/KonstantinRogozhkin/researcherry/blob/master/CONTRIBUTING.md), если вас это интересует
+- Ознакомиться с [объяснением патчей](./patch-explanation.md) для понимания архитектуры
+
+## <a id="development"></a>Разработка
+
+Для разработчиков, желающих собрать Researcherry из исходного кода:
+
+### Быстрая сборка
+
+```bash
+# Инициализация проекта (только при первом запуске)
+./init_project.sh
+
+# Генерация иконок из PNG
+./icons/generate_icons.sh --source icons/icon.png
+
+# Сборка проекта
+./dev/build.sh
+```
+
+### Работа с патчами
+
+```bash
+# Обновление патчей после изменений
+./dev/update_patches.sh
+
+# Исправление проблемных патчей
+./fix_patches.sh
+
+# Полный сброс проекта
+./reset_project.sh
+```
+
+### Структура проекта
+
+- `patches/` — Все изменения Researcherry в виде патчей
+- `icons/` — Исходники и скрипты для генерации иконок
+- `dev/` — Скрипты для разработки и сборки
+- `docs/` — Документация проекта
+- `utils.sh` — Основные переменные брендинга
+
+### Решение проблем
+
+Если возникают проблемы со сборкой, обратитесь к [руководству по решению проблем](../BUILD_TROUBLESHOOTING.md).

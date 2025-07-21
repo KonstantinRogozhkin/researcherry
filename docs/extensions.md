@@ -1,136 +1,195 @@
 <!-- order: 15 -->
 
-# Extensions + Marketplace
+# Расширения + Магазин
 
-## Table of Contents
+## Содержание
 
-- [Marketplace](#marketplace)
-- [How to use the OpenVSX Marketplace](#howto-openvsx-marketplace)
-- [How to use a different extension gallery](#howto-switch-marketplace)
-- [How to self host your own extension gallery](#howto-selfhost-marketplace)
+- [Магазин расширений](#marketplace)
+- [Как использовать OpenVSX Marketplace](#howto-openvsx-marketplace)
+- [Как использовать другой магазин расширений](#howto-switch-marketplace)
+- [Как разместить собственный магазин расширений](#howto-selfhost-marketplace)
 - [Visual Studio Marketplace](#visual-studio-marketplace)
-- [Proprietary Debugging Tools](#proprietary-debugging-tools)
-- [Proprietary Extensions](#proprietary-extensions)
-- [Using the "VSIX Manager" Extension](#vsix-manager)
-- [Extensions compatibility](https://github.com/VSCodium/vscodium/blob/master/docs/extensions-compatibility.md)
+- [Проприетарные инструменты отладки](#proprietary-debugging-tools)
+- [Проприетарные расширения](#proprietary-extensions)
+- [Использование расширения "VSIX Manager"](#vsix-manager)
 
-## <a id="marketplace"></a>Marketplace
 
-Being a vscode based editor, VSCodium gets additional features by installing Visual Studio Code extensions.
-Unfortunately, as Microsoft [prohibits usages of the Microsoft marketplace by any other products](https://github.com/microsoft/vscode/issues/31168) or redistribution of `.vsix` files from it, in order to use Visual Studio Code extensions in non-Microsoft products those need to be installed differently.
+## <a id="marketplace"></a>Магазин расширений
 
-By default, the `product.json` file is set up to use [open-vsx.org](https://open-vsx.org/) as extension gallery, which has an [adapter](https://github.com/eclipse/openvsx/wiki/Using-Open-VSX-in-VS-Code) to the Marketplace API used by Visual Studio Code. Since that is a rather new project, you will likely miss some extensions you know from the Visual Studio Marketplace. You have the following options to obtain such missing extensions:
+Являясь редактором на основе VSCode, Researcherry получает дополнительные функции путем установки расширений Visual Studio Code.
+К сожалению, поскольку Microsoft [запрещает использование Microsoft marketplace любыми другими продуктами](https://github.com/microsoft/vscode/issues/31168) или распространение `.vsix` файлов из него, для использования расширений Visual Studio Code в продуктах не от Microsoft их нужно устанавливать по-другому.
 
-* Ask the extension maintainers to publish to [open-vsx.org](https://open-vsx.org/) in addition to the Visual Studio Marketplace. The publishing process is documented in the [Open VSX Wiki](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions).
-* Create a pull request to [this repository](https://github.com/open-vsx/publish-extensions) to have the [@open-vsx](https://github.com/open-vsx) service account publish the extensions for you.
-* Download and [install the vsix files](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix), for example from the release page in their source repository.
+По умолчанию файл `product.json` настроен на использование [open-vsx.org](https://open-vsx.org/) в качестве галереи расширений, которая имеет [адаптер](https://github.com/eclipse/openvsx/wiki/Using-Open-VSX-in-VS-Code) к Marketplace API, используемому Visual Studio Code. Поскольку это довольно новый проект, вам, вероятно, будет не хватать некоторых расширений, которые вы знаете из Visual Studio Marketplace. У вас есть следующие варианты получения таких недостающих расширений:
 
-## <a id="howto-openvsx-marketplace"></a>How to use the Open VSX Registry
+* Попросите разработчиков расширений опубликовать их на [open-vsx.org](https://open-vsx.org/) в дополнение к Visual Studio Marketplace. Процесс публикации документирован в [Open VSX Wiki](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions).
+* Создайте pull request в [этот репозиторий](https://github.com/open-vsx/publish-extensions), чтобы сервисный аккаунт [@open-vsx](https://github.com/open-vsx) опубликовал расширения за вас.
+* Скачайте и [установите vsix файлы](https://code.visualstudio.com/docs/editor/extension-gallery#_install-from-a-vsix), например, со страницы релизов в их исходном репозитории.
 
-As noted above, the [Open VSX Registry](https://open-vsx.org/) is the pre-set extension gallery in VSCodium. Using the extension view in VSCodium will therefore by default use it.
-See [this article](https://www.gitpod.io/blog/open-vsx/) for more information on the motivation behind Open VSX.
+## <a id="howto-openvsx-marketplace"></a>Как использовать Open VSX Registry
 
-## <a id="howto-switch-marketplace"></a>How to use a different extension gallery
+Как отмечено выше, [Open VSX Registry](https://open-vsx.org/) является предустановленной галереей расширений в Researcherry. Использование представления расширений в Researcherry будет поэтому по умолчанию использовать его.
+См. [эту статью](https://www.gitpod.io/blog/open-vsx/) для получения дополнительной информации о мотивации Open VSX.
 
-You can switch from the pre-set Open VSX Registry by configuring the endpoints using the following solutions.
+## <a id="howto-switch-marketplace"></a>Как использовать другой магазин расширений
 
-You can either use the following environment variables:
-- `VSCODE_GALLERY_SERVICE_URL` ***(required)***
-- `VSCODE_GALLERY_ITEM_URL` ***(required)***
+Вы можете переключиться с предустановленного Open VSX Registry, настроив конечные точки, используя следующие решения.
+
+Вы можете использовать следующие переменные окружения:
+- `VSCODE_GALLERY_SERVICE_URL` ***(обязательно)***
+- `VSCODE_GALLERY_ITEM_URL` ***(обязательно)***
 - `VSCODE_GALLERY_CACHE_URL`
 - `VSCODE_GALLERY_CONTROL_URL`
-- `VSCODE_GALLERY_EXTENSION_URL_TEMPLATE` ***(required)***
+- `VSCODE_GALLERY_EXTENSION_URL_TEMPLATE` ***(обязательно)***
 - `VSCODE_GALLERY_RESOURCE_URL_TEMPLATE`
 
-Or by creating a custom `product.json` at the following location (replace `VSCodium` by `VSCodium - Insiders` if you use that):
-- Windows: `%APPDATA%\VSCodium` or `%USERPROFILE%\AppData\Roaming\VSCodium`
-- macOS: `~/Library/Application Support/VSCodium`
-- Linux: `$XDG_CONFIG_HOME/VSCodium` or `~/.config/VSCodium`
+Или создав пользовательский `product.json` в следующем расположении (замените `Researcherry` на `Researcherry - Insiders`, если используете эту версию):
+- Windows: `%APPDATA%\Researcherry` или `%USERPROFILE%\AppData\Roaming\Researcherry`
+- macOS: `~/Library/Application Support/Researcherry`
+- Linux: `$XDG_CONFIG_HOME/Researcherry` или `~/.config/Researcherry`
 
-with the content like:
+с содержимым типа:
 
 ```jsonc
 {
   "extensionsGallery": {
-    "serviceUrl": "", // required
-    "itemUrl": "", // required
+    "serviceUrl": "", // обязательно
+    "itemUrl": "", // обязательно
     "cacheUrl": "",
     "controlUrl": "",
-    "extensionUrlTemplate": "", // required
+    "extensionUrlTemplate": "", // обязательно
     "resourceUrlTemplate": "",
   }
 }
 ```
 
-## <a id="howto-selfhost-marketplace"></a>How to self-host your own extension gallery
+## <a id="howto-selfhost-marketplace"></a>Как разместить собственный магазин расширений
 
-Individual developers and enterprise companies in regulated or security-conscious industries can self-host their own extension gallery.
+Индивидуальные разработчики и корпоративные компании в регулируемых или заботящихся о безопасности отраслях могут размещать собственную галерею расширений.
 
-There are likely other options, but the following were reported to work:
+Вероятно, есть и другие варианты, но следующие, как сообщается, работают:
 
-* [Open VSX](https://github.com/eclipse/openvsx) eclipse open-source project
-  While the public instance which is run by the Eclipse Foundation is the pre-set endpoint in VSCodium, you can host your own instance.
+* [Open VSX](https://github.com/eclipse/openvsx) — проект с открытым исходным кодом Eclipse
+  Хотя публичный экземпляр, который управляется Eclipse Foundation, является предустановленной конечной точкой в Researcherry, вы можете разместить собственный экземпляр.
 
-    > Open VSX is a [vendor-neutral](https://projects.eclipse.org/projects/ecd.openvsx) open-source alternative to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). It provides a server application that manages [Visual Studio Code extensions](https://code.visualstudio.com/api) in a database, a web application similar to the Visual Studio Marketplace, and a command-line tool for publishing extensions similar to [vsce](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#vsce).
+    > Open VSX — это [vendor-neutral](https://projects.eclipse.org/projects/ecd.openvsx) альтернатива с открытым исходным кодом [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode). Он предоставляет серверное приложение, которое управляет [расширениями Visual Studio Code](https://code.visualstudio.com/api) в базе данных, веб-приложение, похожее на Visual Studio Marketplace, и инструмент командной строки для публикации расширений, похожий на [vsce](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#vsce).
 
-* [code-marketplace](https://coder.com/blog/running-a-private-vs-code-extension-marketplace) open-source project
+* [code-marketplace](https://coder.com/blog/running-a-private-vs-code-extension-marketplace) — проект с открытым исходным кодом
 
-    > `code-marketplace` is a self-contained go binary that does not have a frontend or any mechanisms for extension authors to add or update extensions in the marketplace. It simply reads extensions from file storage and provides an API for VSCode compatible editors to consume.
+    > `code-marketplace` — это автономный go-бинарник, который не имеет фронтенда или каких-либо механизмов для авторов расширений для добавления или обновления расширений в marketplace. Он просто читает расширения из файлового хранилища и предоставляет API для редакторов, совместимых с VSCode.
 
 ## <a id="visual-studio-marketplace"></a>Visual Studio Marketplace
 
-As with any online service, ensure you've understood [its terms of use](https://aka.ms/vsmarketplace-ToU) which include:
-> Marketplace Offerings are intended for use only with Visual Studio Products and Services and you may only install and use Marketplace Offerings with Visual Studio Products and Services.
+Как и с любым онлайн-сервисом, убедитесь, что вы понимаете [его условия использования](https://aka.ms/vsmarketplace-ToU), которые включают:
+> Предложения Marketplace предназначены для использования только с продуктами и сервисами Visual Studio, и вы можете устанавливать и использовать предложения Marketplace только с продуктами и сервисами Visual Studio.
 
-So, we can't provide any help if you intend to infringe their terms of use.
+Поэтому мы не можем предоставить никакой помощи, если вы намерены нарушить их условия использования.
 
-Also note that this extension gallery hosts multiple extensions that are non-free and have license-agreements that explicitly forbid using them in non-Microsoft products, along with using telemetry.
+Также обратите внимание, что эта галерея расширений размещает множество расширений, которые являются несвободными и имеют лицензионные соглашения, которые явно запрещают их использование в продуктах не от Microsoft, наряду с использованием телеметрии.
 
-## <a id="proprietary-debugging-tools"></a>Proprietary Debugging Tools
+## <a id="proprietary-debugging-tools"></a>Проприетарные инструменты отладки
 
-The debugger provided with Microsoft's [C# extension](https://github.com/OmniSharp/omnisharp-vscode) as well as the (Windows) debugger provided with their [C++ extension](https://github.com/Microsoft/vscode-cpptools) are very restrictively licensed to only work with the official Visual Studio Code build. See [this comment in the C# extension repo](https://github.com/OmniSharp/omnisharp-vscode/issues/2491#issuecomment-418811364) and [this comment in the C++ extension repo](https://github.com/Microsoft/vscode-cpptools/issues/21#issuecomment-248349017).
+Отладчик, предоставляемый с [расширением C#](https://github.com/OmniSharp/omnisharp-vscode) от Microsoft, а также отладчик (Windows), предоставляемый с их [расширением C++](https://github.com/Microsoft/vscode-cpptools), имеют очень ограничительные лицензии для работы только с официальной сборкой Visual Studio Code. См. [этот комментарий в репозитории расширения C#](https://github.com/OmniSharp/omnisharp-vscode/issues/2491#issuecomment-418811364) и [этот комментарий в репозитории расширения C++](https://github.com/Microsoft/vscode-cpptools/issues/21#issuecomment-248349017).
 
-A workaround exists to get debugging working in C# projects, by using Samsung's opensource [netcoredbg](https://github.com/Samsung/netcoredbg) package. See [this comment](https://github.com/VSCodium/vscodium/issues/82#issue-409806641) for instructions on how to set that up.
+Существует обходной путь для работы отладки в проектах C#, используя пакет [netcoredbg](https://github.com/Samsung/netcoredbg) с открытым исходным кодом от Samsung. См. [этот комментарий](https://github.com/VSCodium/vscodium/issues/82#issue-409806641) для инструкций по его настройке.
 
-## <a id="proprietary-extensions"></a>Proprietary Extensions
+## <a id="proprietary-extensions"></a>Проприетарные расширения
 
-Like the debuggers mentioned above, some extensions you may find in the marketplace (like the [Remote Development Extensions](https://code.visualstudio.com/docs/remote/remote-overview)) only function with the official Visual Studio Code build. You can work around this by adding the extension's internal ID (found on the extension's page) to the `extensionAllowedProposedApi` property of the product.json in your VSCodium installation. For example:
+Как и отладчики, упомянутые выше, некоторые расширения, которые вы можете найти в marketplace (например, [расширения удаленной разработки](https://code.visualstudio.com/docs/remote/remote-overview)), функционируют только с официальной сборкой Visual Studio Code. Вы можете обойти это, добавив внутренний ID расширения (найденный на странице расширения) в свойство `extensionAllowedProposedApi` файла product.json в вашей установке Researcherry. Например:
 
 ```jsonc
   "extensionAllowedProposedApi": [
-    // ...
-    "ms-vscode-remote.vscode-remote-extensionpack",
-    "ms-vscode-remote.remote-wsl",
-    // ...
-  ],
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-ssh-edit",
+    "ms-vscode.remote-explorer"
+  ]
 ```
 
-In some cases, the above change won't help because the extension is hard-coded to only work with the official Visual Studio Code product.
+## <a id="vsix-manager"></a>Использование расширения "VSIX Manager"
 
-## <a id="vsix-manager"></a>Using the "VSIX Manager" Extension
+Для упрощения управления расширениями в Researcherry рекомендуется использовать расширение [VSIX Manager](https://open-vsx.org/extension/zokugun/vsix-manager).
 
-The [**VSIX Manager**](https://github.com/zokugun/vscode-vsix-manager) extension provides a powerful and user-friendly interface for managing `.vsix` files directly within VSCodium. Its author is the main maintainer of VSCodium ;)
+Это расширение позволяет:
+- Устанавливать расширения из `.vsix` файлов
+- Управлять расширениями из разных источников
+- Создавать локальные репозитории расширений
+- Синхронизировать расширения между установками
 
-It is particularly beneficial for:
-- **Support for Multiple Marketplaces**: Seamlessly install and manage extensions from several marketplaces at the same time, allowing access to a broader range of extensions.
-- **Local Files**: Manage a collection of `.vsix` files stored locally.
-- **GitHub/Forgejo Release**: Install the extension directly from its GitHub/Forgejo release pages.
-- **Fallback Options**
+### Установка VSIX Manager
 
-### <a id="use-cases"></a>Use Cases
+1. Откройте Researcherry
+2. Перейдите в раздел расширений (`Ctrl+Shift+X`)
+3. Найдите "VSIX Manager" от zokugun
+4. Установите расширение
 
-- Developers working offline can easily manage `.vsix` files.
-- Teams can distribute specific versions of extensions across systems.
-- Enterprises with restricted environments can maintain control over installed extensions.
-- Users can connect to multiple marketplaces and access a wider range of extensions or switch seamlessly between them.
+### Использование
 
-### <a id="marketplace-support"></a>Marketplace Support
+После установки вы можете:
+- Использовать команду "VSIX Manager: Install from VSIX" для установки `.vsix` файлов
+- Настроить дополнительные источники расширений
+- Управлять установленными расширениями
 
-The **VSIX Manager** extension supports managing extensions from several marketplaces simultaneously. This feature enables:
-- **Access to Diverse Extensions**: Install extensions from different sources like Open VSX or private repositories.
-- **Fallback Options**: Ensure extension availability even if one marketplace is temporarily inaccessible.
-- **Enterprise Flexibility**: Use private or self-hosted marketplaces alongside public ones to meet security and compliance requirements.
-- **Custom Configurations**: Prioritize specific marketplaces for particular needs while keeping access to others.
+## Рекомендуемые расширения для Researcherry
 
-## [Extensions compatibility](https://github.com/VSCodium/vscodium/blob/master/docs/extensions-compatibility.md)
+### Для исследователей клиентов
+
+- **Markdown All in One** - для создания отчетов и документации
+- **Excel Viewer** - для просмотра данных в табличном формате
+- **JSON Tools** - для работы с данными интервью в JSON формате
+- **REST Client** - для тестирования API интеграций
+- **GitLens** - для отслеживания изменений в исследовательских проектах
+
+### Для разработчиков AI-агентов
+
+- **Python** - основной язык для AI/ML разработки
+- **Jupyter** - для работы с ноутбуками и анализа данных
+- **Docker** - для контейнеризации AI-агентов
+- **Thunder Client** - альтернатива Postman для тестирования API
+- **YAML** - для конфигурационных файлов
+
+### Общие полезные расширения
+
+- **Russian Language Pack** - русская локализация интерфейса
+- **Auto Rename Tag** - автоматическое переименование HTML/XML тегов
+- **Bracket Pair Colorizer** - цветовое выделение скобок
+- **Path Intellisense** - автодополнение путей к файлам
+- **TODO Highlight** - выделение TODO комментариев
+
+## Решение проблем с расширениями
+
+### Расширение не устанавливается
+
+1. Проверьте, что используете Open VSX Registry
+2. Попробуйте найти альтернативное расширение
+3. Скачайте `.vsix` файл и установите вручную
+4. Используйте VSIX Manager для управления
+
+### Расширение не работает корректно
+
+1. Проверьте совместимость с VSCodium/Researcherry
+2. Обновите расширение до последней версии
+3. Перезапустите Researcherry
+4. Проверьте логи расширения в Developer Tools
+
+### Отсутствуют функции расширения
+
+Некоторые расширения могут требовать дополнительной настройки для работы с Researcherry:
+
+1. Добавьте ID расширения в `extensionAllowedProposedApi`
+2. Настройте переменные окружения
+3. Используйте альтернативные расширения с открытым исходным кодом
+
+## Создание собственных расширений
+
+Для создания расширений для Researcherry:
+
+1. Используйте [Yeoman Generator](https://code.visualstudio.com/api/get-started/your-first-extension)
+2. Тестируйте расширение в Researcherry
+3. Публикуйте в Open VSX Registry
+4. Документируйте особенности для пользователей Researcherry
+
+## Полезные ссылки
+
+- [Open VSX Registry](https://open-vsx.org/)
+- [Документация по API расширений](https://code.visualstudio.com/api)
+- [Руководство по публикации в Open VSX](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions)
 

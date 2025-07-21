@@ -1,0 +1,74 @@
+diff --git a/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts b/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
+index xxxxxxx..xxxxxxx 100644
+--- a/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
++++ b/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
+@@ -102,8 +102,8 @@ type GettingStartedStartEntryContent = BuiltinGettingStartedStartEntry[];
+ export const startEntries: GettingStartedStartEntryContent = [
+ 	{
+ 		id: 'welcome.showNewFileEntries',
+-		title: localize('gettingStarted.newFile.title', "New File..."),
+-		description: localize('gettingStarted.newFile.description', "Open a new untitled text file, notebook, or custom editor."),
++		title: localize('gettingStarted.newFile.title', "Новый файл..."),
++		description: localize('gettingStarted.newFile.description', "Открыть новый текстовый файл, блокнот или пользовательский редактор."),
+ 		icon: Codicon.newFile,
+ 		content: {
+ 			type: 'startEntry',
+@@ -112,8 +112,8 @@ export const startEntries: GettingStartedStartEntryContent = [
+ 	},
+ 	{
+ 		id: 'topLevelOpenMac',
+-		title: localize('gettingStarted.openMac.title', "Open..."),
+-		description: localize('gettingStarted.openMac.description', "Open a file or folder to start working"),
++		title: localize('gettingStarted.openMac.title', "Открыть..."),
++		description: localize('gettingStarted.openMac.description', "Открыть файл или папку для начала работы"),
+ 		icon: Codicon.folderOpened,
+ 		when: '!isWeb && isMac',
+ 		content: {
+@@ -123,8 +123,8 @@ export const startEntries: GettingStartedStartEntryContent = [
+ 	},
+ 	{
+ 		id: 'topLevelOpenFile',
+-		title: localize('gettingStarted.openFile.title', "Open File..."),
+-		description: localize('gettingStarted.openFile.description', "Open a file to start working"),
++		title: localize('gettingStarted.openFile.title', "Открыть файл..."),
++		description: localize('gettingStarted.openFile.description', "Открыть файл для начала работы"),
+ 		icon: Codicon.goToFile,
+ 		when: 'isWeb || !isMac',
+ 		content: {
+@@ -201,8 +201,8 @@ export const startEntries: GettingStartedStartEntryContent = [
+ export const walkthroughs: GettingStartedWalkthroughContent = [
+ 	{
+ 		id: 'Setup',
+-		title: localize('gettingStarted.setup.title', "Get started with Researcherry"),
+-		description: localize('gettingStarted.setup.description', "Customize your editor, learn the basics, and start coding"),
++		title: localize('gettingStarted.setup.title', "Начало работы с Researcherry"),
++		description: localize('gettingStarted.setup.description', "Настройте редактор, изучите основы и начните программировать"),
+ 		isFeatured: true,
+ 		icon: setupIcon,
+ 		when: '!isWeb',
+-		walkthroughPageTitle: localize('gettingStarted.setup.walkthroughPageTitle', 'Setup Researcherry'),
++		walkthroughPageTitle: localize('gettingStarted.setup.walkthroughPageTitle', 'Настройка Researcherry'),
+ 		next: 'Beginner',
+ 		content: {
+ 			type: 'steps',
+ 			steps: [
+ 				{
+ 					id: 'pickColorTheme',
+-					title: localize('gettingStarted.pickColor.title', "Choose your theme"),
+-					description: localize('gettingStarted.pickColor.description.interpolated', "The right theme helps you focus on your code, is easy on your eyes, and is simply more fun to use.\n{0}", Button(localize('titleID', "Browse Color Themes"), 'command:workbench.action.selectTheme')),
++					title: localize('gettingStarted.pickColor.title', "Выберите тему оформления"),
++					description: localize('gettingStarted.pickColor.description.interpolated', "Правильная тема помогает сосредоточиться на коде, не напрягает глаза и просто приятнее в использовании.\n{0}", Button(localize('titleID', "Просмотреть темы оформления"), 'command:workbench.action.selectTheme')),
+ 					completionEvents: [
+ 						'onSettingChanged:workbench.colorTheme',
+ 						'onCommand:workbench.action.selectTheme'
+@@ -211,8 +211,8 @@ export const walkthroughs: GettingStartedWalkthroughContent = [
+ 				},
+ 				{
+ 					id: 'extensionsWeb',
+-					title: localize('gettingStarted.extensions.title', "Code with extensions"),
+-					description: localize('gettingStarted.extensionsWeb.description.interpolated', "Extensions are Researcherry's power-ups. A growing number are becoming available in the web.\n{0}", Button(localize('browsePopularWeb', "Browse Popular Web Extensions"), 'command:workbench.extensions.action.showPopularExtensions')),
++					title: localize('gettingStarted.extensions.title', "Программируйте с расширениями"),
++					description: localize('gettingStarted.extensionsWeb.description.interpolated', "Расширения — это усилители возможностей Researcherry. Всё больше из них становятся доступными в веб-версии.\n{0}", Button(localize('browsePopularWeb', "Просмотреть популярные веб-расширения"), 'command:workbench.extensions.action.showPopularExtensions')),
+ 					when: 'workspacePlatform == \'webworker\'',
+ 					media: {
+ 						type: 'svg', altText: 'Researcherry extension marketplace with featured language extensions', path: 'extensions-web.svg'

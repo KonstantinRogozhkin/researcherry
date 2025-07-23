@@ -1,42 +1,42 @@
-# Contributing
+# Участие в разработке
 
-:+1::tada: First off, thanks for taking the time to contribute! :tada::+1:
+:+1::tada: Прежде всего, спасибо за то, что нашли время внести свой вклад! :tada::+1:
 
-#### Table Of Contents
+#### Содержание
 
-- [Code of Conduct](#code-of-conduct)
-- [Reporting Bugs](#reporting-bugs)
-- [Making Changes](#making-changes)
+- [Кодекс поведения](#кодекс-поведения)
+- [Сообщение об ошибках](#сообщение-об-ошибках)
+- [Внесение изменений](#внесение-изменений)
 
-## Code of Conduct
+## Кодекс поведения
 
-This project and everyone participating in it is governed by the [VSCodium Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+Этот проект и все участвующие в нем люди руководствуются [Кодексом поведения Researcherry](CODE_OF_CONDUCT.md). Участвуя в проекте, вы обязуетесь соблюдать этот кодекс.
 
-## Reporting Bugs
+## Сообщение об ошибках
 
-### Before Submitting an Issue
+### Перед созданием issue
 
-Before creating bug reports, please check existing issues and [the Troubleshooting page](https://github.com/VSCodium/vscodium/blob/master/docs/troubleshooting.md) as you might find out that you don't need to create one.
-When you are creating a bug report, please include as many details as possible. Fill out [the required template](https://github.com/VSCodium/vscodium/issues/new?&labels=bug&&template=bug_report.md), the information it asks for helps us resolve issues faster.
+Перед созданием отчетов об ошибках проверьте существующие issues и [страницу устранения неполадок](../BUILD_TROUBLESHOOTING.md), возможно, вам не нужно создавать новый.
+При создании отчета об ошибке включите как можно больше деталей. Заполните [требуемый шаблон](https://github.com/KonstantinRogozhkin/researcherry/issues/new?&labels=bug&&template=bug_report.md), информация в нем помогает нам быстрее решать проблемы.
 
-## Making Changes
+## Внесение изменений
 
-If you want to make changes, please read [the Build page](./docs/howto-build.md).
+Если вы хотите внести изменения, прочитайте [Полное руководство по сборке](РУКОВОДСТВО_ПО_СБОРКЕ.md).
 
-### Building VSCodium
+### Сборка Researcherry
 
-To build VSCodium, please follow the command found in the section [`Build Scripts`](./docs/howto-build.md#build-scripts).
+Для сборки Researcherry следуйте командам из раздела [Быстрый старт](РУКОВОДСТВО_ПО_СБОРКЕ.md#быстрый-старт).
 
-### Updating patches
+### Обновление патчей
 
-If you want to update the existing patches, please follow the section [`Patch Update Process - Semi-Automated`](./docs/howto-build.md#patch-update-process-semiauto).
+Если вы хотите обновить существующие патчи, используйте скрипт `./dev/update_patches.sh`.
 
-### Add a new patch
+### Добавление нового патча
 
-- first, you need to build VSCodium
-- then use the command `./dev/patch.sh <your patch name>`, to initiate a new patch
-- when the script pauses at `Press any key when the conflict have been resolved...`, open `vscode` directory in **VSCodium**
-- run `npm run watch`
-- run `./script/code.sh`
-- make your changes
-- press any key to continue the script `patch.sh`
+- сначала соберите Researcherry
+- затем используйте команду `./dev/patch.sh <имя_вашего_патча>` для создания нового патча
+- когда скрипт остановится на `Press any key when the conflict have been resolved...`, откройте папку `vscode` в **Researcherry**
+- запустите `npm run watch`
+- запустите `./script/code.sh`
+- внесите свои изменения
+- нажмите любую клавишу для продолжения скрипта `patch.sh`

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Путь к исходному изображению
-SOURCE_ICON="/Users/konstantin/Projects/researcherry/icons/researcherry-high-resolution-logo (1).png"
+SOURCE_ICON="/Users/konstantin/Projects/researcherry/icons/icon.png"
 
 # Создаем временную директорию для иконок
 TEMP_DIR="/tmp/researcherry_icons_fix"

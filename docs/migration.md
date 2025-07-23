@@ -1,54 +1,54 @@
 <!-- order: 20 -->
 
-# Migration
+# Миграция
 
-## Table of Contents
+## Содержание
 
-- [Manual Migration from Visual Studio Code to VSCodium](#manual-migration)
-- [Semi-Automatic Migration with "Sync Settings" Extension](#semi-automatic-migration)
+- [Ручная миграция с Visual Studio Code на Researcherry](#manual-migration)
+- [Полуавтоматическая миграция с расширением "Sync Settings"](#semi-automatic-migration)
 
-## <a id="manual-migration"></a>Manual Migration from Visual Studio Code to VSCodium
+## <a id="manual-migration"></a>Ручная миграция с Visual Studio Code на Researcherry
 
-VSCodium (and a freshly cloned copy of vscode built from source) stores its extension files in `~/.vscode-oss`. So if you currently have Visual Studio Code installed, your extensions won't automatically populate. You can copy the `extensions` from `~/.vscode/extensions` to `~/.vscode-oss/extensions`.
+Researcherry (как и свеже склонированная копия vscode, собранная из исходного кода) хранит файлы расширений в `~/.vscode-oss`. Поэтому, если у вас установлен Visual Studio Code, ваши расширения не появятся автоматически. Вы можете скопировать папку `extensions` из `~/.vscode/extensions` в `~/.vscode-oss/extensions`.
 
-Visual Studio Code stores its `keybindings.json` and `settings.json` file in these locations:
+Visual Studio Code хранит файлы `keybindings.json` и `settings.json` в следующих местах:
 
 - __Windows__: `%APPDATA%\Code\User`
 - __macOS__: `$HOME/Library/Application Support/Code/User`
 - __Linux__: `$HOME/.config/Code/User`
 
-You can copy these files to the VSCodium user settings folder:
+Вы можете скопировать эти файлы в папку пользовательских настроек Researcherry:
 
-- __Windows__: `%APPDATA%\VSCodium\User`
-- __macOS__: `$HOME/Library/Application Support/VSCodium/User`
-- __Linux__: `$HOME/.config/VSCodium/User`
+- __Windows__: `%APPDATA%\Researcherry\User`
+- __macOS__: `$HOME/Library/Application Support/Researcherry/User`
+- __Linux__: `$HOME/.config/Researcherry/User`
 
-To copy your settings manually:
+Чтобы скопировать настройки вручную:
 
-- In Visual Studio Code, go to Settings (`Meta+,`)
-- Click the three dots `...` and choose 'Open settings.json'
-- Copy the contents of settings.json into the same place in VSCodium
+- В Visual Studio Code перейдите в Настройки (`Meta+,`)
+- Нажмите на три точки `...` и выберите 'Открыть settings.json'
+- Скопируйте содержимое settings.json в то же место в Researcherry
 
-## <a id="semi-automatic-migration"></a>Semi-Automatic Migration with "Sync Settings" Extension
+## <a id="semi-automatic-migration"></a>Полуавтоматическая миграция с расширением "Sync Settings"
 
-The [**Sync Settings**](https://github.com/zokugun/vscode-sync-settings) extension can simplify the migration process by enabling synchronization of settings, keybindings, extensions, and more between Visual Studio Code and VSCodium. Its author is the main maintainer of VSCodium ;)
+Расширение [**Sync Settings**](https://github.com/zokugun/vscode-sync-settings) может упростить процесс миграции, позволяя синхронизировать настройки, горячие клавиши, расширения и многое другое между Visual Studio Code и Researcherry. Его автор является основным мейнтейнером VSCodium ;)
 
-The extension is available in the Visual Studio Marketplace, OpenVSX or directly in its GitHub repository.
+Расширение доступно в Visual Studio Marketplace, OpenVSX или напрямую в его GitHub-репозитории.
 
-### Steps:
+### Шаги:
 
-1. Install the **Sync Settings** extension in both Visual Studio Code and VSCodium.
-2. Configure the extension on both Visual Studio Code and VSCodium:
-  - Open Command Palette (`Meta+Shift+P`).
-  - Search for `Sync Settings: Open the repository settings` and execute the command.
-  - Configure the repository
-3. Export your current settings from Visual Studio Code:
-  - Open Command Palette (`Meta+Shift+P`).
-  - Search for `Sync Settings: Upload (user -> repository)` and execute the command.
-4. Import the settings into VSCodium:
-  - I recommend the setting `"syncSettings.openOutputOnActivity": true,`.
-  - Open Command Palette (`Meta+Shift+P`).
-  - Search for `Sync Settings: Download (repository -> user)` and execute the command.
-  - Wait for all the extensions to be downloaded and installed (follow logs in the `Output` panel) before restarting VSCodium.
+1. Установите расширение **Sync Settings** в Visual Studio Code и Researcherry.
+2. Настройте расширение в Visual Studio Code и Researcherry:
+  - Откройте палитру команд (`Meta+Shift+P`).
+  - Найдите `Sync Settings: Open the repository settings` и выполните команду.
+  - Настройте репозиторий
+3. Экспортируйте текущие настройки из Visual Studio Code:
+  - Откройте палитру команд (`Meta+Shift+P`).
+  - Найдите `Sync Settings: Upload (user -> repository)` и выполните команду.
+4. Импортируйте настройки в Researcherry:
+  - Рекомендую настройку `"syncSettings.openOutputOnActivity": true,`.
+  - Откройте палитру команд (`Meta+Shift+P`).
+  - Найдите `Sync Settings: Download (repository -> user)` и выполните команду.
+  - Дождитесь загрузки и установки всех расширений (следите за логами в панели `Output`) перед перезапуском Researcherry.
 
-This method ensures that all supported configurations are seamlessly transferred.
+Этот метод обеспечивает беспроблемную передачу всех поддерживаемых конфигураций.

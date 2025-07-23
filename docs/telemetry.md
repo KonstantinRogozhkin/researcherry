@@ -1,53 +1,53 @@
 <!-- order: 10 -->
 
-# Getting all the Telemetry Out
+# Полное отключение телеметрии
 
-This page explains how VSCodium handles telemetry and how to ensure your privacy.
+Эта страница объясняет, как Researcherry обрабатывает телеметрию и как обеспечить вашу приватность.
 
-## Table of Contents
+## Содержание
 
-- [Telemetry in VSCodium](#telemetry)
-- [Replacements to Microsoft Online Services](#replacements)
-- [Checking for Telemetry](#checking)
-- [Additional Privacy Settings](#additional-settings)
-- [VSCodium Announcements](#announcements)
-- [Malicious & Deprecated Extensions](#malicious-extensions)
+- [Телеметрия в Researcherry](#telemetry)
+- [Замена онлайн-сервисов Microsoft](#replacements)
+- [Проверка телеметрии](#checking)
+- [Дополнительные настройки приватности](#additional-settings)
+- [Объявления Researcherry](#announcements)
+- [Вредоносные и устаревшие расширения](#malicious-extensions)
 
-## <a id="telemetry"></a>Telemetry in VSCodium
+## <a id="telemetry"></a>Телеметрия в Researcherry
 
-Even though we do not pass the telemetry build flags (and go out of our way to cripple the baked-in telemetry), Microsoft will still track usage by default.
+Несмотря на то, что мы не передаем флаги сборки телеметрии (и делаем все возможное, чтобы отключить встроенную телеметрию), Microsoft все равно может отслеживать использование по умолчанию.
 
-We do however set the default `telemetry.enableTelemetry` and `telemetry.enableCrashReporter` values to `false`. You can see those by viewing your VSCodium `settings.json` and searching for `telemetry`.
+Однако мы устанавливаем значения по умолчанию `telemetry.enableTelemetry` и `telemetry.enableCrashReporter` в `false`. Вы можете увидеть их, просмотрев ваш файл `settings.json` в Researcherry и найдя `telemetry`.
 
-It is also highly recommended that you review all the settings that "use online services" by following [these instructions](https://code.visualstudio.com/docs/getstarted/telemetry#_managing-online-services). The `@tag:usesOnlineServices` filter on the settings page will show that by default:
+Также настоятельно рекомендуется просмотреть все настройки, которые "используют онлайн-сервисы", следуя [этим инструкциям](https://code.visualstudio.com/docs/getstarted/telemetry#_managing-online-services). Фильтр `@tag:usesOnlineServices` на странице настроек покажет, что по умолчанию:
 
-- Extensions auto check for updates and auto install updates
-- Searches within the app are sent to an online service for "natural language processing"
-- Updates to the app are fetched in the background
+- Расширения автоматически проверяют обновления и автоматически устанавливают их
+- Поиск в приложении отправляется в онлайн-сервис для "обработки естественного языка"
+- Обновления приложения загружаются в фоновом режиме
 
-These can all be disabled.
+Все это можно отключить.
 
-__Please note that some extensions send telemetry data to Microsoft as well. We have no control over this and can only recommend removing the extension.__ _(For example, the C# extension `ms-vscode.csharp` sends tracking data to Microsoft.)_
+__Обратите внимание, что некоторые расширения также отправляют данные телеметрии в Microsoft. Мы не можем это контролировать и можем только рекомендовать удалить такое расширение.__ _(Например, расширение C# `ms-vscode.csharp` отправляет данные отслеживания в Microsoft.)_
 
-## <a id="replacements"></a>Replacements to Microsoft Online Services
+## <a id="replacements"></a>Замена онлайн-сервисов Microsoft
 
-When searching the `@tag:usesOnlineServices` filter, note that while the "Update: Mode" setting description still says "The updates are fetched from a Microsoft online service", VSCodium's build script [sets the `updateUrl` field](https://github.com/VSCodium/vscodium/blob/master/prepare_vscode.sh#L135) in `product.json` directly to the GitHub page, so enabling that setting won't actually result in any calls to Microsoft online service.
+При поиске с фильтром `@tag:usesOnlineServices` обратите внимание, что хотя описание настройки "Update: Mode" все еще говорит "Обновления загружаются из онлайн-сервиса Microsoft", скрипт сборки Researcherry [устанавливает поле `updateUrl`](https://github.com/KonstantinRogozhkin/researcherry/blob/master/prepare_vscode.sh#L135) в `product.json` напрямую на страницу GitHub, поэтому включение этой настройки фактически не приведет к вызовам онлайн-сервиса Microsoft.
 
-Likewise, while the descriptions for "Extensions: Auto Check Updates" and "Extensions: Auto Update" include the same phrase, VSCodium [replaces](https://github.com/VSCodium/vscodium/blob/master/prepare_vscode.sh#L121) the Visual Studio Marketplace with Open VSX, so these settings won't call Microsoft, either.
+Аналогично, хотя описания для "Extensions: Auto Check Updates" и "Extensions: Auto Update" включают ту же фразу, Researcherry [заменяет](https://github.com/KonstantinRogozhkin/researcherry/blob/master/prepare_vscode.sh#L121) Visual Studio Marketplace на Open VSX, поэтому эти настройки также не будут обращаться к Microsoft.
 
-## <a id="checking"></a>Checking for Telemetry
+## <a id="checking"></a>Проверка телеметрии
 
-If you want to verify that no telemetry is being sent, you can use network monitoring tools like:
+Если вы хотите убедиться, что телеметрия не отправляется, вы можете использовать инструменты мониторинга сети, такие как:
 
 - Wireshark
 - Little Snitch (macOS)
 - GlassWire (Windows)
 
-Look for connections to Microsoft domains and telemetry endpoints.
+Ищите соединения с доменами Microsoft и конечными точками телеметрии.
 
-## <a id="additional-settings"></a>Additional Privacy Settings
+## <a id="additional-settings"></a>Дополнительные настройки приватности
 
-For maximum privacy, you can add these settings to your `settings.json`:
+Для максимальной приватности вы можете добавить эти настройки в ваш `settings.json`:
 
 ```json
 {
@@ -61,18 +61,18 @@ For maximum privacy, you can add these settings to your `settings.json`:
 }
 ```
 
-These settings will disable various telemetry and tracking features.
+Эти настройки отключат различные функции телеметрии и отслеживания.
 
-## <a id="announcements"></a>VSCodium Announcements
+## <a id="announcements"></a>Объявления Researcherry
 
-The Welcome page in VSCodium displays announcements that are fetched from the project's GitHub repository.
+Страница приветствия в Researcherry отображает объявления, которые загружаются из GitHub-репозитория проекта.
 
-If you prefer to disable this feature, you can set the `workbench.welcomePage.extraAnnouncements` setting to `false` in your `settings.json`.
+Если вы предпочитаете отключить эту функцию, вы можете установить настройку `workbench.welcomePage.extraAnnouncements` в `false` в вашем `settings.json`.
 
-## <a id="malicious-extensions"></a>Malicious & Deprecated Extensions
+## <a id="malicious-extensions"></a>Вредоносные и устаревшие расширения
 
-The definitions for malicious and deprecated extensions are dynamically loaded from the following URL:
+Определения вредоносных и устаревших расширений динамически загружаются по следующему URL:
 https://raw.githubusercontent.com/EclipseFdn/publish-extensions/refs/heads/master/extension-control/extensions.json.
 
-If you prefer to avoid any external connections, you can set the`extensions.excludeUnsafes` setting to `false` in your `settings.json`.
-However, this is not recommended as it may reduce the safety of your environment.
+Если вы предпочитаете избежать любых внешних соединений, вы можете установить настройку `extensions.excludeUnsafes` в `false` в вашем `settings.json`.
+Однако это не рекомендуется, так как это может снизить безопасность вашей среды.

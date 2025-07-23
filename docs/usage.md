@@ -1,76 +1,76 @@
 <!-- order: 25 -->
 
-# Usage
+# Использование
 
-## Table of Contents
+## Содержание
 
-- [Sign in with GitHub](#signin-github)
-- [Accounts authentication](https://github.com/VSCodium/vscodium/blob/master/docs/accounts-authentication.md)
-- [How do I run VSCodium in portable mode?](#portable)
-- [How do I fix the default file manager?](#file-manager)
-- [How do I press and hold a key and have it repeat in VSCodium?](#press-and-hold)
-- [How do I open VSCodium from the terminal?](#terminal-support)
-  - [From Linux .tar.gz](#from-linux-targz)
+- [Вход через GitHub](#signin-github)
+- [Аутентификация аккаунтов](https://github.com/KonstantinRogozhkin/researcherry/blob/master/docs/accounts-authentication.md)
+- [Как запустить Researcherry в портативном режиме?](#portable)
+- [Как исправить файловый менеджер по умолчанию?](#file-manager)
+- [Как настроить повтор клавиш в Researcherry?](#press-and-hold)
+- [Как открыть Researcherry из терминала?](#terminal-support)
+  - [Из Linux .tar.gz](#from-linux-targz)
 
-## <a id="signin-github"></a>Sign in with GitHub
+## <a id="signin-github"></a>Вход через GitHub
 
-In VSCodium, `Sign in with GitHub` is using a Personal Access Token.<br />
-Follow the documentation https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token to create your token.<br />
-Select the scopes dependending on the extension which needs access to GitHub. (GitLens requires the `repo` scope.)
+В Researcherry `Вход через GitHub` использует Personal Access Token.<br />
+Следуйте документации https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token для создания токена.<br />
+Выберите области доступа в зависимости от расширения, которому нужен доступ к GitHub. (GitLens требует область `repo`.)
 
 ### Linux
 
-If you are getting the error `Writing login information to the keychain failed with error 'The name org.freedesktop.secrets was not provided by any .service files'.`, you need to install the package `gnome-keyring`.
+Если вы получаете ошибку `Writing login information to the keychain failed with error 'The name org.freedesktop.secrets was not provided by any .service files'.`, вам нужно установить пакет `gnome-keyring`.
 
-## <a id="portable"></a>How do I run VSCodium in portable mode?
-You can follow the [Portable Mode instructions](https://code.visualstudio.com/docs/editor/portable) from the Visual Studio Code website.
-- **Windows** / **Linux** : the instructions can be followed as written.
-- **macOS** : portable mode is enabled by the existence of a specially named folder. For Visual Studio Code that folder name is `code-portable-data`. For VSCodium, that folder name is `codium-portable-data`. So to enable portable mode for VSCodium on Mac OS, follow the instructions outlined in the [link above](https://code.visualstudio.com/docs/editor/portable), but create a folder named `codium-portable-data` instead of `code-portable-data`.
+## <a id="portable"></a>Как запустить Researcherry в портативном режиме?
+Вы можете следовать [инструкциям по портативному режиму](https://code.visualstudio.com/docs/editor/portable) с сайта Visual Studio Code.
+- **Windows** / **Linux**: инструкции можно выполнять как написано.
+- **macOS**: портативный режим включается наличием специально названной папки. Для Visual Studio Code эта папка называется `code-portable-data`. Для Researcherry эта папка называется `researcherry-portable-data`. Чтобы включить портативный режим для Researcherry на Mac OS, следуйте инструкциям по [ссылке выше](https://code.visualstudio.com/docs/editor/portable), но создайте папку с именем `researcherry-portable-data` вместо `code-portable-data`.
 
-## <a id="file-manager"></a>How do I fix the default file manager (Linux)?
+## <a id="file-manager"></a>Как исправить файловый менеджер по умолчанию (Linux)?
 
-In some cases, VSCodium becomes the file manager used to open directories (instead of apps like Dolphin or Nautilus).<br />
-It's due to that no application was defined as the default file manager and so the system is using the latest capable application.
+В некоторых случаях Researcherry становится файловым менеджером для открытия директорий (вместо приложений типа Dolphin или Nautilus).<br />
+Это происходит из-за того, что не было определено приложение по умолчанию для файлового менеджера, и система использует последнее подходящее приложение.
 
-To set the default app, create the file `~/.config/mimeapps.list` with the content like:
+Чтобы установить приложение по умолчанию, создайте файл `~/.config/mimeapps.list` с содержимым:
 ```
 [Default Applications]
 inode/directory=org.gnome.Nautilus.desktop;
 ```
 
-You can find your regular file manager with the command:
+Вы можете найти ваш обычный файловый менеджер командой:
 ```
 > grep directory /usr/share/applications/mimeinfo.cache
-inode/directory=codium.desktop;org.gnome.Nautilus.desktop;
+inode/directory=researcherry.desktop;org.gnome.Nautilus.desktop;
 ```
 
-## <a id="press-and-hold"></a>How do I press and hold a key and have it repeat in VSCodium (Mac)?
+## <a id="press-and-hold"></a>Как настроить повтор клавиш в Researcherry (Mac)?
 
-This is a common question for Visual Studio Code and the procedure is slightly different in VSCodium because the `defaults` path is different.
+Это частый вопрос для Visual Studio Code, и процедура немного отличается в Researcherry, потому что путь `defaults` другой.
 
 ```bash
-$ defaults write com.vscodium ApplePressAndHoldEnabled -bool false
+$ defaults write com.researcherry ApplePressAndHoldEnabled -bool false
 ```
 
-## <a id="terminal-support"></a>How do I open VSCodium from the terminal?
+## <a id="terminal-support"></a>Как открыть Researcherry из терминала?
 
-For macOS and Windows:
-- Go to the command palette (View | Command Palette...)
-- Choose `Shell command: Install 'codium' command in PATH`.
+Для macOS и Windows:
+- Перейдите в палитру команд (View | Command Palette...)
+- Выберите `Shell command: Install 'researcherry' command in PATH`.
 
 ![](https://user-images.githubusercontent.com/2707340/60140295-18338a00-9766-11e9-8fda-b525b6f15c13.png)
 
-This allows you to open files or directories in VSCodium directly from your terminal:
+Это позволяет открывать файлы или директории в Researcherry напрямую из терминала:
 
 ```bash
-~/in-my-project $ codium . # open this directory
-~/in-my-project $ codium file.txt # open this file
+~/in-my-project $ researcherry . # открыть эту директорию
+~/in-my-project $ researcherry file.txt # открыть этот файл
 ```
 
-Feel free to alias this command to something easier to type in your shell profile (e.g. `alias code=codium`).
+Вы можете создать алиас для этой команды в вашем профиле оболочки для более удобного ввода (например, `alias code=researcherry`).
 
-On Linux, when installed with a package manager, `codium` has been installed in your `PATH`.
+В Linux, при установке через пакетный менеджер, `researcherry` устанавливается в ваш `PATH`.
 
-### <a id="from-linux-targz"></a>From Linux .tar.gz
+### <a id="from-linux-targz"></a>Из Linux .tar.gz
 
-When the archive `VSCodium-linux-<arch>-<version>.tar.gz` is extracted, the main entry point for VSCodium is `./bin/codium`.
+Когда архив `Researcherry-linux-<arch>-<version>.tar.gz` извлечен, основная точка входа для Researcherry — `./bin/researcherry`.

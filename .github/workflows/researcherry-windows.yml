@@ -122,9 +122,14 @@ jobs:
 
       - name: Compress vscode artifact
         run: |
-          find vscode -type f -not -path "*/node_modules/*" -not -path "vscode/.build/node/*" -not -path "vscode/.git/*" > vscode.txt
-          echo "vscode/.build/extensions/node_modules" >> vscode.txt
-          echo "vscode/.git" >> vscode.txt
+          # Use PowerShell commands for Windows compatibility
+          Get-ChildItem -Path vscode -Recurse -File | Where-Object {
+            $_.FullName -notmatch '\\node_modules\\' -and
+            $_.FullName -notmatch 'vscode\\.build\\node\\' -and
+            $_.FullName -notmatch 'vscode\\.git\\'
+          } | ForEach-Object { $_.FullName.Replace((Get-Location).Path + '\\', '') } | Out-File -FilePath vscode.txt -Encoding utf8
+          Add-Content -Path vscode.txt -Value "vscode\.build\extensions\node_modules"
+          Add-Content -Path vscode.txt -Value "vscode\.git"
           tar -czf vscode.tar.gz -T vscode.txt
         if: env.SHOULD_BUILD == 'yes'
 

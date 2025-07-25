@@ -2,6 +2,18 @@ diff --git a/build/lib/optimize.js b/build/lib/optimize.js
 index 2a87c23..a5ad5d0 100644
 --- a/build/lib/optimize.js
 +++ b/build/lib/optimize.js
+@@ -186,9 +186,9 @@ function bundleTask(opts) {
+ function minifyTask(src, sourceMapBaseUrl) {
+     const sourceMappingURL = sourceMapBaseUrl ? ((f) => `${sourceMapBaseUrl}/${f.relative}.map`) : undefined;
+     return cb => {
+-        const svgmin = require('gulp-svgmin');
++        // const svgmin = require('gulp-svgmin'); // Disabled to prevent PNG processing errors
+         const esbuildFilter = (0, gulp_filter_1.default)('**/*.{js,css}', { restore: true });
+-        const svgFilter = (0, gulp_filter_1.default)('**/*.svg', { restore: true });
++        // const svgFilter = (0, gulp_filter_1.default)('**/*.svg', { restore: true }); // Disabled
+         (0, pump_1.default)(gulp_1.default.src([src + '/**', '!' + src + '/**/*.map']), esbuildFilter, gulp_sourcemaps_1.default.init({ loadMaps: true }), event_stream_1.default.map((f, cb) => {
+             esbuild_1.default.build({
+                 entryPoints: [f.path],
 @@ -213,7 +213,8 @@ function minifyTask(src, sourceMapBaseUrl) {
                      cb(undefined, f);
                  }

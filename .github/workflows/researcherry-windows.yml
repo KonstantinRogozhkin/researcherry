@@ -226,6 +226,7 @@ jobs:
 
       # Добавляем шаг для обновления иконок
       - name: Update icons
+        shell: bash
         run: ./icons/update_icon.sh
         if: env.SHOULD_BUILD == 'yes'
 

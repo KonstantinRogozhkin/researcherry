@@ -89,6 +89,7 @@ jobs:
         env:
           PULL_REQUEST_ID: ${{ github.event.inputs.checkout_pr }}
         run: ./get_pr.sh
+        shell: bash
 
       - name: Setup GCC (Windows)
         uses: egor-tensin/setup-mingw@v2
@@ -111,6 +112,7 @@ jobs:
 
       - name: Clone VSCode repo
         run: ./get_repo.sh
+        shell: bash
         if: env.SHOULD_BUILD == 'yes'
 
       - name: Build
@@ -118,6 +120,7 @@ jobs:
           SHOULD_BUILD_REH: 'no'
           SHOULD_BUILD_REH_WEB: 'no'
         run: ./build.sh
+        shell: bash
         if: env.SHOULD_BUILD == 'yes'
 
       - name: Compress vscode artifact
@@ -203,6 +206,7 @@ jobs:
           DISABLE_MSI: ${{ vars.DISABLE_STABLE_MSI }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./check_tags.sh
+        shell: bash
         if: env.SHOULD_BUILD == 'yes'
 
       - name: Download vscode artifact

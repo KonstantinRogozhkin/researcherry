@@ -221,6 +221,7 @@ jobs:
         run: |
           # Use PowerShell extraction instead of tar for Windows compatibility
           Expand-Archive -Path vscode.zip -DestinationPath . -Force
+        shell: powershell
         if: env.SHOULD_BUILD == 'yes'
 
       # Добавляем шаг для обновления иконок

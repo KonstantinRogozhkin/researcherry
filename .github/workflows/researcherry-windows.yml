@@ -93,7 +93,8 @@ jobs:
       - name: Setup GCC (Windows)
         uses: egor-tensin/setup-mingw@v2
         with:
-          version: latest
+          version: '13.2.0'
+          static: 0
         if: env.SHOULD_BUILD == 'yes'
 
       - name: Setup Node.js environment
@@ -189,7 +190,8 @@ jobs:
         if: env.SHOULD_BUILD == 'yes'
         uses: egor-tensin/setup-mingw@v2
         with:
-          version: latest
+          version: '13.2.0'
+          static: 0
 
       - name: Check existing Researcherry tags/releases
         env:

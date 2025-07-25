@@ -1,0 +1,67 @@
+diff --git a/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts b/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
+index 1234567..abcdefg 100644
+--- a/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
++++ b/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
+@@ -204,14 +204,11 @@ const Button = (title: string, href: string) => `[${title}](${href})`;
+ 
+ export const walkthroughs: GettingStartedWalkthroughContent = [
+ 	{
+-		id: 'Setup',
+-		title: localize('gettingStarted.setup.title', "Get started with Researcherry"),
+-		description: localize('gettingStarted.setup.description', "Customize your editor, learn the basics, and start coding"),
++		id: 'ResearcherryAI',
++		title: localize('gettingStarted.researcherry.title', "Добро пожаловать в ResearcherryAI"),
++		description: localize('gettingStarted.researcherry.description', "No-code платформа AI-агентов для исследования клиентов."),
+ 		isFeatured: true,
+-		icon: setupIcon,
++		icon: registerIcon('getting-started-researcherry', Codicon.beaker, localize('getting-started-researcherry-icon', "Icon used for the ResearcherryAI category of welcome page")),
+ 		when: '!isWeb',
+-		walkthroughPageTitle: localize('gettingStarted.setup.walkthroughPageTitle', 'Setup Researcherry'),
+-		next: 'Beginner',
++		walkthroughPageTitle: localize('gettingStarted.researcherry.walkthroughPageTitle', 'Добро пожаловать в ResearcherryAI'),
+ 		content: {
+ 			type: 'steps',
+ 			steps: [
+@@ -219,63 +216,44 @@ export const walkthroughs: GettingStartedWalkthroughContent = [
+ 					id: 'researcherry-intro',
+ 					title: localize('gettingStarted.researcherry.intro.title', "Что такое ResearcherryAI?"),
+ 					description: localize('gettingStarted.researcherry.intro.description', "ResearcherryAI — это no-code платформа, которая позволяет продуктовым командам и исследователям создавать и масштабировать AI-агентов для глубокого изучения клиентов. Эти агенты автоматизируют весь цикл исследования: они анализируют коммуникации с пользователями, выявляют неудовлетворенные потребности, оценивают их влияние на выручку и предоставляют инсайты в реальном времени."),
+ 					media: {
+ 						type: 'svg',
+ 						altText: 'ResearcherryAI Logo',
+ 						path: 'extensions-web.svg'
+ 					},
+ 				},
+ 				{
+ 					id: 'researcherry-how-it-works',
+ 					title: localize('gettingStarted.researcherry.howitworks.title', "Как это работает?"),
+ 					description: localize('gettingStarted.researcherry.howitworks.description', "AI-агенты, созданные на нашей платформе, выполняют рутинные, но критически важные задачи:\n- **Анализируют** интервью, переписки в мессенджерах и тикеты в поддержке.\n- **Планируют** и организуют интервью с пользователями.\n- **Формулируют** и верифицируют инсайты о поведении клиентов.\n- **Оценивают** влияние предлагаемых изменений на бизнес-метрики."),
+ 					media: {
+ 						type: 'svg',
+ 						altText: 'How it works',
+ 						path: 'settings.svg'
+ 					}
+ 				},
+ 				{
+ 					id: 'researcherry-results',
+ 					title: localize('gettingStarted.researcherry.results.title', "Наши результаты"),
+ 					description: localize('gettingStarted.researcherry.results.description', "Наш MVP — агент **ProductResearcherAI** — уже показывает впечатляющие результаты:\n- **В 80 раз быстрее** анализ интервью (3 минуты вместо 4-5 часов).\n- **В 15 раз быстрее** создание карт пользовательских путей (20 минут вместо 5+ часов).\n- **Увеличение производительности** исследователя в 2-3 раза."),
+ 					media: {
+ 						type: 'svg',
+ 						altText: 'Results',
+ 						path: 'learn.svg'
+ 					}
+ 				},
+ 				{
+ 					id: 'researcherry-advantage',
+ 					title: localize('gettingStarted.researcherry.advantage.title', "Наше уникальное преимущество"),
+ 					description: localize('gettingStarted.researcherry.advantage.description', "В отличие от конкурентов, мы предоставляем **комплексное решение для всего цикла исследования**. Мы не заменяем исследователей, а **усиливаем их экспертизу** с помощью AI, используя принцип **'человек-в-цикле'** для гарантии качества и достоверности данных."),
+ 					media: {
+ 						type: 'svg',
+ 						altText: 'Our advantage',
+ 						path: 'commandPalette.svg'
+ 					},
+ 				}
+ 			]
+ 		}
+ 	},

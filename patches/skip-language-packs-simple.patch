@@ -1,0 +1,16 @@
+diff --git a/build/lib/builtInExtensions.js b/build/lib/builtInExtensions.js
+index 1234567..abcdefg 100644
+--- a/build/lib/builtInExtensions.js
++++ b/build/lib/builtInExtensions.js
+@@ -140,6 +140,11 @@ function syncExtension(extension, controlState) {
+         }
+     }
+     switch (controlState) {
++        case 'marketplace':
++            if (extension.name && extension.name.includes('language-pack')) {
++                console.log('Skipping language pack:', extension.name);
++                return event_stream_1.default.readArray([]);
++            }
+         case 'disabled':
+             log(ansi_colors_1.default.blue('[disabled]'), ansi_colors_1.default.gray(extension.name));
+             return event_stream_1.default.readArray([]);

@@ -1,0 +1,14 @@
+diff --git a/build/lib/optimize.js b/build/lib/optimize.js
+index 2a87c23..a5ad5d0 100644
+--- a/build/lib/optimize.js
++++ b/build/lib/optimize.js
+@@ -213,7 +213,8 @@ function minifyTask(src, sourceMapBaseUrl) {
+                     cb(undefined, f);
+                 }
+             }, cb);
+-        }), esbuildFilter.restore, svgFilter, svgmin(), svgFilter.restore, gulp_sourcemaps_1.default.write('./', {
++        // Fix: Disable SVG minification to prevent PNG processing errors
++        }), esbuildFilter.restore, gulp_sourcemaps_1.default.write('./', {
+             sourceMappingURL,
+             sourceRoot: undefined,
+             includeContent: true,

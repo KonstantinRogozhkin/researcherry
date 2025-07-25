@@ -189,6 +189,12 @@ jobs:
           python-version: '3.11'
         if: env.SHOULD_BUILD == 'yes'
 
+      - name: Install GCC (Windows)
+        if: env.SHOULD_BUILD == 'yes'
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          version: latest
+
       - name: Check existing Researcherry tags/releases
         env:
           DISABLE_MSI: ${{ vars.DISABLE_STABLE_MSI }}

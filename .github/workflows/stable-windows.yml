@@ -14,15 +14,16 @@ on:
         description: Checkout PR
   repository_dispatch:
     types: [stable]
-  push:
-    branches: [ master ]
-    paths-ignore:
-    - '**/*.md'
-    - 'upstream/*.json'
-  pull_request:
-    branches: [ master ]
-    paths-ignore:
-    - '**/*.md'
+  # Disabled: Use researcherry-windows.yml instead
+  # push:
+  #   branches: [ master ]
+  #   paths-ignore:
+  #   - '**/*.md'
+  #   - 'upstream/*.json'
+  # pull_request:
+  #   branches: [ master ]
+  #   paths-ignore:
+  #   - '**/*.md'
 
 env:
   APP_NAME: VSCodium
